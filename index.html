@@ -1,37 +1,280 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CodeVortax</title>
+<title>CodeVortax — Android apps, ESP32 firmware and CLI tools</title>
+<meta name="description" content="Open source Android apps, ESP32 firmware and command-line tools. Local-first, offline by default, no accounts and no tracking.">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://codevortax.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="CodeVortax — Android apps, ESP32 firmware and CLI tools">
+<meta property="og:description" content="Open source Android apps, ESP32 firmware and command-line tools. Local-first, offline by default, no accounts and no tracking.">
+<meta property="og:url" content="https://codevortax.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
 </head>
 <body>
-<header>
-  <h1>CodeVortax</h1>
-  <p>ESP32 projects, tools and Android apps.</p>
-  <a class="btn" href="https://github.com/CodeVortax">GitHub profile</a>
+
+<a class="skip" href="#projects">Skip to projects</a>
+<div class="progress"><span id="bar"></span></div>
+
+<header class="nav">
+  <a class="brand" href="#top">
+    <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
+  </nav>
 </header>
-<main>
-  <h2>Projects</h2>
-  <div class="grid">
-    <a class="card" href="https://github.com/CodeVortax/focus">
-      <h3>focus</h3><p>Android app.</p>
-    </a>
-    <a class="card" href="https://github.com/CodeVortax/swipe-tally">
-      <h3>swipe-tally</h3><p>Swipe counting app.</p>
-    </a>
-    <a class="card" href="https://github.com/CodeVortax/esp32-ir-bench">
-      <h3>esp32-ir-bench</h3><p>ESP32 infrared test bench.</p>
-    </a>
-    <a class="card" href="https://github.com/CodeVortax/esp-usb-bridge">
-      <h3>esp-usb-bridge</h3><p>ESP USB bridge.</p>
-    </a>
-    <a class="card" href="https://github.com/CodeVortax/esp32-wifi-repeater-manage">
-      <h3>esp32-wifi-repeater-manage</h3><p>ESP32 WiFi repeater manager.</p>
-    </a>
-  </div>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="blob b1" aria-hidden="true"></div>
+    <div class="blob b2" aria-hidden="true"></div>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Open source · Android · ESP32 · Python</p>
+      <h1>CodeVortax</h1>
+      <p class="lead">Android apps, ESP32 firmware and small sharp command-line tools. Local-first, offline by default, no accounts and no tracking.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See the projects</a>
+        <a class="btn ghost" href="https://github.com/CodeVortax">GitHub profile</a>
+      </div>
+      <ul class="stats">
+        <li><b>13</b><span>projects</span></li>
+        <li><b>7</b><span>languages</span></li>
+        <li><b>23</b><span>stars</span></li>
+        <li><b>11</b><span>AGPL-3.0</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="section-head reveal">
+      <h2>Projects</h2>
+      <p>Everything is public on GitHub. Most of it is AGPL-3.0; the two oldest apps are MIT.</p>
+    </div>
+
+    <div class="chips reveal" role="group" aria-label="Filter projects by category">
+      <button class="chip is-active" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" data-filter="android" aria-pressed="false">Android</button>
+      <button class="chip" data-filter="esp32" aria-pressed="false">ESP32</button>
+      <button class="chip" data-filter="tool" aria-pressed="false">CLI &amp; tools</button>
+      <button class="chip" data-filter="web" aria-pressed="false">Web</button>
+    </div>
+
+    <p class="empty" id="empty" hidden>No projects in this category.</p>
+
+    <div class="grid" id="grid">
+
+      <a class="card featured reveal" href="https://github.com/CodeVortax/focus" data-cat="android" data-lang="kotlin">
+        <div class="card-top">
+          <h3>focus</h3>
+          <span class="badge">★ 6</span>
+        </div>
+        <p>Study first, then spend what you earn. Gates Shorts, Reels and distracting apps until your daily work is done.</p>
+        <div class="meta">
+          <span class="lang"><i style="--c:#a97bff"></i>Kotlin</span>
+          <span>AGPL-3.0</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/CodeVortax/crystal-alarm" data-cat="android" data-lang="kotlin">
+        <div class="card-top">
+          <h3>crystal-alarm</h3>
+          <span class="badge">★ 1</span>
+        </div>
+        <p>A private alarm clock: analog clock face, timer, stopwatch, puzzle dismiss and volume ramp. No internet permission.</p>
+        <div class="meta">
+          <span class="lang"><i style="--c:#a97bff"></i>Kotlin</span>
+          <span>AGPL-3.0</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/CodeVortax/swipe-tally" data-cat="android" data-lang="kotlin">
+        <div class="card-top">
+          <h3>swipe-tally</h3>
+          <span class="badge">★ 2</span>
+        </div>
+        <p>Counts Shorts, Reels and TikTok swipes correctly with an AccessibilityService. About 600 lines of plain Kotlin.</p>
+        <div class="meta">
+          <span class="lang"><i style="--c:#a97bff"></i>Kotlin</span>
+          <span>MIT</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/CodeVortax/esp-usb-bridge" data-cat="android" data-lang="java">
+        <div class="card-top">
+          <h3>esp-usb-bridge</h3>
+          <span class="badge">★ 2</span>
+        </div>
+        <p>Shares the phone's USB port with Termux as a serial-over-network port, so <code>esptool</code> just works. No root, no PC.</p>
+        <div class="meta">
+          <span class="lang"><i style="--c:#b07219"></i>Java</span>
+          <span>MIT</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/CodeVortax/AppBlocker" data-cat="android" data-lang="shell">
+        <div class="card-top">
+          <h3>AppBlocker</h3>
+          <span class="badge">★ 0</span>
+        </div>
+        <p>Magisk module that blocks or disables apps from a list, plus a local web UI on port 8765 to manage everything.</p>
+        <div class="meta">
+          <span class="lang"><i style="--c:#89e051"></i>Shell</span>
+          <span>AGPL-3.0</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/CodeVortax/esp32-ir-bench" data-cat="esp32" data-lang="c">
+        <div class="card-top">
+          <h3>esp32-ir-bench</h3>
+          <span class="badge">★ 1</span>
+        </div>
+        <p>Learns IR codes from a real remote and fires them back through an IR LED, with a phone-friendly web app served by the chip.</p>
+        <div class="meta">
+          <span class="lang"><i style="--c:#e34c26"></i>C / HTML</span>
+          <span>AGPL-3.0</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/CodeVortax/esp32-wifi-repeater-manage" data-cat="esp32" data-lang="c">
+        <div class="card-top">
+          <h3>esp32-wifi-repeater-manage</h3>
+          <span class="badge">★ 1</span>
+        </div>
+        <p>ESP32 repeater that counts data per device, enforces a daily quota, and gives you a live dashboard and a Telegram bot.</p>
+        <div class="meta">
+          <span class="lang"><i style="--c:#555555"></i>C</span>
+          <span>AGPL-3.0</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/CodeVortax/vortax" data-cat="tool" data-lang="python">
+        <div class="card-top">
+          <h3>vortax</h3>
+          <span class="badge">★ 2</span>
+        </div>
+        <p>Run and manage QEMU virtual machines from one small CLI and a web dashboard. Standard library only, KVM or software.</p>
+        <div class="meta">
+          <span class="lang"><i style="--c:#3572a5"></i>Python</span>
+          <span>AGPL-3.0</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/CodeVortax/relink" data-cat="tool" data-lang="python">
+        <div class="card-top">
+          <h3>relink</h3>
+          <span class="badge">★ 2</span>
+        </div>
+        <p>Downloader for sites that only hand out temporary links: it remembers how to get a fresh one and resumes where it stopped.</p>
+        <div class="meta">
+          <span class="lang"><i style="--c:#3572a5"></i>Python</span>
+          <span>AGPL-3.0</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/CodeVortax/rtlterm" data-cat="tool" data-lang="python">
+        <div class="card-top">
+          <h3>rtlterm</h3>
+          <span class="badge">★ 2</span>
+        </div>
+        <p>Arabic, Persian, Urdu and Hebrew in terminals that can't join or reverse text, like Termux. Pure Python, no dependencies.</p>
+        <div class="meta">
+          <span class="lang"><i style="--c:#3572a5"></i>Python</span>
+          <span>AGPL-3.0</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/CodeVortax/qpack" data-cat="tool" data-lang="python">
+        <div class="card-top">
+          <h3>qpack</h3>
+          <span class="badge">★ 1</span>
+        </div>
+        <p>Scans photos of exams and homework, deskews the pages, runs OCR and grades the answers — with an Arabic physics grader.</p>
+        <div class="meta">
+          <span class="lang"><i style="--c:#3572a5"></i>Python</span>
+          <span>AGPL-3.0</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/CodeVortax/unisoc-imei-notes" data-cat="tool" data-lang="python">
+        <div class="card-top">
+          <h3>unisoc-imei-notes</h3>
+          <span class="badge">★ 3</span>
+        </div>
+        <p>Where Unisoc phones keep IMEI, serial and MAC addresses, and how the tools read or write them. Plus restoration tooling.</p>
+        <div class="meta">
+          <span class="lang"><i style="--c:#3572a5"></i>Python</span>
+          <span>AGPL-3.0</span>
+        </div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/CodeVortax/twrp-theme-studio" data-cat="web" data-lang="javascript">
+        <div class="card-top">
+          <h3>twrp-theme-studio</h3>
+          <span class="badge">★ 0</span>
+        </div>
+        <p>Visual, live-preview editor for TWRP recovery themes: load a real <code>ui.xml</code>, edit it by tapping, export a flash-ready zip.</p>
+        <div class="meta">
+          <span class="lang"><i style="--c:#f1e05a"></i>JavaScript</span>
+          <span>AGPL-3.0</span>
+        </div>
+      </a>
+
+    </div>
+
+    <p class="more reveal">
+      <a href="https://github.com/CodeVortax?tab=repositories">All repositories on GitHub <span aria-hidden="true">↗</span></a>
+    </p>
+  </section>
+
+  <section id="about" class="section">
+    <div class="section-head reveal">
+      <h2>About</h2>
+      <p>Small tools that do one thing well, and keep your data on your own device.</p>
+    </div>
+
+    <div class="cols">
+      <article class="col reveal from-left">
+        <h3>Android apps</h3>
+        <p>Kotlin apps built around privacy: no accounts, no analytics, no internet permission where it isn't needed. <em>focus</em>, <em>Crystal</em> and <em>swipe-tally</em> all run fully offline.</p>
+      </article>
+      <article class="col reveal">
+        <h3>ESP32 firmware</h3>
+        <p>Boards that serve their own web app over WiFi — an IR test bench and a repeater that meters and limits each device — so the phone in your hand is the control panel.</p>
+      </article>
+      <article class="col reveal from-right">
+        <h3>Termux tooling</h3>
+        <p>Most of the Python here is made to work from a phone: bridging USB to <code>esptool</code>, reading right-to-left text, QEMU, and downloads that survive a dropped connection.</p>
+      </article>
+    </div>
+  </section>
+
 </main>
-<footer>&copy; CodeVortax</footer>
+
+<footer>
+  <p class="foot-links">
+    <a href="https://github.com/CodeVortax">GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax?tab=repositories">All repos</a>
+  </p>
+  <p class="foot-note">Also maintains kernel, module and recovery device trees for Realme Unisoc devices as forks.</p>
+  <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
+</footer>
+
+<script src="app.js" defer></script>
 </body>
 </html>
