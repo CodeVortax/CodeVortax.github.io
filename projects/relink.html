@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>relink — CodeVortax</title>
+<meta name="description" content="A downloader for the sites that don&#x27;t give you a real file link.">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://codevortax.github.io/projects/relink.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="relink — CodeVortax">
+<meta property="og:description" content="A downloader for the sites that don&#x27;t give you a real file link.">
+<meta property="og:url" content="https://codevortax.github.io/projects/relink.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "relink", "description": "A downloader for the sites that don't give you a real file link.", "codeRepository": "https://github.com/CodeVortax/relink", "programmingLanguage": "Python", "license": "https://www.gnu.org/licenses/agpl-3.0.html", "url": "https://codevortax.github.io/projects/relink.html"}</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="bar"></span></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About</a>
+    <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <article>
+    <header class="phead">
+      <div class="phead-inner">
+        <p class="crumb reveal"><a href="../index.html#projects">Projects</a> <span aria-hidden="true">/</span> CLI &amp; tools</p>
+        <h1 class="reveal">relink</h1>
+        <p class="ptag reveal">A downloader for the sites that don't give you a real file link.</p>
+        <div class="tags reveal"><span class="tag lang"><i style="--c:#3572a5"></i>Python</span><span class="tag">AGPL-3.0</span><span class="tag">★ 2</span><span class="tag">beta</span><span class="tag">CLI &amp; tools</span></div>
+        <div class="pcta reveal">
+          <a class="btn primary" href="https://github.com/CodeVortax/relink">View the source</a>
+          <a class="btn ghost" href="https://github.com/CodeVortax/relink/tree/main/templates">Documentation</a>
+        </div>
+      </div>
+    </header>
+    <div class="pwrap">
+      <div class="pbody">
+        <section class="pintro reveal">
+          <p>Download a movie or an episode from a site and you often get a <b>temporary</b> link that expires after a few minutes. If the connection drops halfway, the link is dead and the download is lost &mdash; painful on mobile data.</p>
+          <p>relink's answer: a download should never be tied to one link. It remembers the <b>page</b> and <b>how to get the link from it</b>, so when the link expires or the connection drops it fetches a fresh link and continues from the same byte.</p>
+        </section>
+
+        <section class="psec">
+          <h2 class="sub reveal">What it does</h2>
+          <ul class="features">
+        <li class="feature reveal">
+          <h3>Survives bad connections</h3>
+          <p>Retry, refresh the link, resume. No manual restarts.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Continuous link refresh</h3>
+          <p>Expired or tokenized links are replaced automatically, mid-download.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Template mode</h3>
+          <p>Small YAML step lists (<code>get</code>, <code>post</code>, <code>form</code>, <code>find</code>, <code>choose</code>) that describe how a site goes from page to direct file link.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Generic mode</h3>
+          <p>If no template matches, the URL goes to yt-dlp with settings tuned for bad connections.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Easy to extend</h3>
+          <p>Adding a site means writing a small template file, not new code.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Remembers jobs</h3>
+          <p>Job state is saved per job, so <code>relink resume</code> continues after a reboot.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Discovery tools</h3>
+          <p>A small search API for episodes, a server lister, and <code>relink discover</code> to fingerprint and group new sites.</p>
+        </li>
+          </ul>
+        </section>
+      </div>
+      <aside class="pside reveal">
+        <div class="specs">
+          <h2 class="sub">At a glance</h2>
+          <dl>
+        <div class="dl-row">
+          <dt>Requires</dt>
+          <dd>Python 3.9+, PyYAML</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Optional</dt>
+          <dd>yt-dlp and ffmpeg for generic mode</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Job state</dt>
+          <dd>~/.relink/jobs</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Templates</dt>
+          <dd>templates/&lt;site&gt;.yml</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Resume</dt>
+          <dd>HTTP Range on .part files</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Built for</dt>
+          <dd>Termux first</dd>
+        </div>
+          </dl>
+        </div>
+        <a class="side-link" href="https://github.com/CodeVortax/relink">Repository <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Install</h2>
+        <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>Install in Termux</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>pkg install -y python git
+git clone https://github.com/CodeVortax/relink
+cd relink
+pip install -e .          # installs pyyaml and the `relink` command</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Optional generic mode</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>pip install yt-dlp &amp;&amp; pkg install -y ffmpeg</code></pre></div>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">How to use it</h2>
+        <div class="usage">
+          <div class="usage-block reveal">
+            <h3>Downloading</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>relink search the mentalist               # small search API (episodes)
+relink servers &lt;episode-url&gt;              # servers on a page and which have an adapter
+relink get &lt;episode-url&gt;                  # best quality, saved to ~/storage/downloads/relink
+relink get &lt;url&gt; --quality low --out ~/storage/downloads
+relink get &lt;url&gt; --dry                    # only print the direct link
+relink list                               # jobs and progress
+relink resume                             # continue unfinished jobs</code></pre></div>
+          </div>
+          <div class="usage-block reveal">
+            <h3>Behind a Cloudflare challenge</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>relink get &lt;url&gt; --cookie &quot;cf_clearance=...&quot;</code></pre></div>
+          </div>
+          <div class="usage-block reveal">
+            <h3>Forcing yt-dlp</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>relink get https://www.youtube.com/watch?v=...   # no template: uses yt-dlp
+relink get &lt;url&gt; --ytdlp                         # force it even if a template matches</code></pre></div>
+          </div>
+          <div class="usage-block reveal">
+            <h3>How a template works</h3>
+            <p>A template says how to get from a page to a direct file link: read the page's server list, open the download host, pick a quality, submit the form. The engine is in <code>relink/engine.py</code>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Good to know</h2>
+        <ul class="notes">
+          <li class="reveal">Only download content you have the right to download, and respect each site's terms.</li>
+          <li class="reveal">Templates need only Python and PyYAML; yt-dlp is optional.</li>
+          <li class="reveal">Sites change, so a template can break. <code>relink servers</code> tells you which hosts still have an adapter.</li>
+          <li class="reveal">Open work: adapters for more hosts, series mode, and a site analyzer that drafts a template from a fingerprint bundle.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="pn" aria-label="More projects">
+      <a class="pn-link prev" href="vortax.html"><span>Previous</span><b>vortax</b></a>
+      <a class="pn-link next" href="rtlterm.html"><span>Next</span><b>rtlterm</b></a>
+    </nav>
+  </article>
+</main>
+
+<footer>
+  <p class="foot-links">
+    <a href="../index.html#projects">All projects</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/relink">Source on GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
+  </p>
+  <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

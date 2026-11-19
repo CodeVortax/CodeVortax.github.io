@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>unisoc-imei-notes — CodeVortax</title>
+<meta name="description" content="Where a Unisoc phone keeps its IMEI, serial and MAC, and how the tools read them.">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://codevortax.github.io/projects/unisoc-imei-notes.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="unisoc-imei-notes — CodeVortax">
+<meta property="og:description" content="Where a Unisoc phone keeps its IMEI, serial and MAC, and how the tools read them.">
+<meta property="og:url" content="https://codevortax.github.io/projects/unisoc-imei-notes.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "unisoc-imei-notes", "description": "Where a Unisoc phone keeps its IMEI, serial and MAC, and how the tools read them.", "codeRepository": "https://github.com/CodeVortax/unisoc-imei-notes", "programmingLanguage": "Python", "license": "https://www.gnu.org/licenses/agpl-3.0.html", "url": "https://codevortax.github.io/projects/unisoc-imei-notes.html"}</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="bar"></span></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About</a>
+    <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <article>
+    <header class="phead">
+      <div class="phead-inner">
+        <p class="crumb reveal"><a href="../index.html#projects">Projects</a> <span aria-hidden="true">/</span> CLI &amp; tools</p>
+        <h1 class="reveal">unisoc-imei-notes</h1>
+        <p class="ptag reveal">Where a Unisoc phone keeps its IMEI, serial and MAC, and how the tools read them.</p>
+        <div class="tags reveal"><span class="tag lang"><i style="--c:#3572a5"></i>Python</span><span class="tag">AGPL-3.0</span><span class="tag">★ 3</span><span class="tag">research notes</span><span class="tag">CLI &amp; tools</span></div>
+        <div class="pcta reveal">
+          <a class="btn primary" href="https://github.com/CodeVortax/unisoc-imei-notes">View the source</a>
+          <a class="btn ghost" href="https://github.com/CodeVortax/unisoc-imei-notes/tree/main/docs">Documentation</a>
+        </div>
+      </div>
+    </header>
+    <div class="pwrap">
+      <div class="pbody">
+        <section class="pintro reveal">
+          <p>Research notes on where a Unisoc (Spreadtrum) phone keeps its IMEI, serial number and MAC addresses, and how the common tools read or write them. The notes are built from the source of the Spreadtrum factory tool WriteIMEI R21, the C# NV editor SPRDNVEditor, the XDA thread on rooting an SP6820, and a read-only analysis of one real NV backup.</p>
+          <p>The repository also carries device-specific restoration tools for the Realme C21Y and the Realme C51, with a walkthrough of how they work.</p>
+        </section>
+
+        <section class="psec">
+          <h2 class="sub reveal">What it does</h2>
+          <ul class="features">
+        <li class="feature reveal">
+          <h3>Documented NV layout</h3>
+          <p>Where each identifier lives, which partitions hold it, and how the factory tools address it.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Tool analysis</h3>
+          <p>How WriteIMEI and SPRDNVEditor are built, and what their binaries actually do.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Read-only scanner</h3>
+          <p>Finds identifiers in a backup folder and can mask them in the output.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Restoration tools</h3>
+          <p>Complete, documented procedures for the Realme C21Y (RMX3261 / RMX3263) and the Realme C51 (RMX3830).</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Honest scope</h3>
+          <p>Every inference is marked as an inference, and the limits of the analysis are written down rather than glossed over.</p>
+        </li>
+          </ul>
+        </section>
+      </div>
+      <aside class="pside reveal">
+        <div class="specs">
+          <h2 class="sub">At a glance</h2>
+          <dl>
+        <div class="dl-row">
+          <dt>Subject</dt>
+          <dd>Unisoc / Spreadtrum NV memory</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Sources</dt>
+          <dd>WriteIMEI Tool R21, SPRDNVEditor, XDA, one real NV backup</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Analysed device</dt>
+          <dd>Realme RMX3830, Android 17</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Restoration tools</dt>
+          <dd>Realme C21Y and Realme C51</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Scanner</dt>
+          <dd>Read-only</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Python</dt>
+          <dd>3, standard library</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Tools</dt>
+          <dd>scan_backup.py, parse_miscdata.py, idtool.py</dd>
+        </div>
+          </dl>
+        </div>
+        <a class="side-link" href="https://github.com/CodeVortax/unisoc-imei-notes">Repository <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Install</h2>
+        <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>No install</h3>
+            <p>The tools are plain Python scripts with no dependencies. Clone the repo and run them where the backup is.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Get it</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>git clone https://github.com/CodeVortax/unisoc-imei-notes
+cd unisoc-imei-notes</code></pre></div>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">How to use it</h2>
+        <div class="usage">
+          <div class="usage-block reveal">
+            <h3>Quick start</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>python3 tools/scan_backup.py /path/to/backup_folder
+python3 tools/scan_backup.py /path/to/backup_folder --reported 123456789012345 --mask
+python3 tools/scan_backup.py /path/to/backup_folder --serial YOURSERIAL
+python3 tools/parse_miscdata.py /path/to/miscdata.bin --mask
+python3 tools/idtool.py get /path/to/dump_folder --mask
+python3 tools/idtool.py patch-imei /path/to/l_fixnv1_a.bin --imei1 YOURIMEI1 --imei2 YOURIMEI2 --out /path/to/l_fixnv1_a_patched.bin</code></pre></div>
+          </div>
+          <div class="usage-block reveal">
+            <h3>Read the docs</h3>
+            <p>The numbered docs in <code>docs/</code> walk from the NV layout through each tool; <code>HOW_IT_WORKS_C21Y.md</code> and <code>devices/c51/README.md</code> cover the restoration tools.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Good to know</h2>
+        <ul class="notes">
+          <li class="reveal">The scanner only <b>reads</b>. Nothing here writes identifiers to a phone.</li>
+          <li class="reveal">WriteIMEI's real phone protocol lives inside a closed <code>PhoneCommand.dll</code> that is not in the source zip, so that part is described from the outside.</li>
+          <li class="reveal"><b>Legal:</b> the IMEI identifies a handset to mobile networks. Restoring the number printed on your own device is a normal repair task; writing an IMEI that does not belong to the device is illegal in many countries and can get the phone blocked. These notes explain how the software is built &mdash; they are not a procedure for changing identifiers.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="pn" aria-label="More projects">
+      <a class="pn-link prev" href="qpack.html"><span>Previous</span><b>qpack</b></a>
+      <a class="pn-link next" href="twrp-theme-studio.html"><span>Next</span><b>twrp-theme-studio</b></a>
+    </nav>
+  </article>
+</main>
+
+<footer>
+  <p class="foot-links">
+    <a href="../index.html#projects">All projects</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/unisoc-imei-notes">Source on GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
+  </p>
+  <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

@@ -18,19 +18,20 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 <script>document.documentElement.classList.replace('no-js','js');</script>
+<script type="application/ld+json">{}</script>
 </head>
 <body>
 
-<a class="skip" href="#projects">Skip to projects</a>
+<a class="skip" href="#main">Skip to content</a>
 <div class="progress"><span id="bar"></span></div>
 
 <header class="nav">
-  <a class="brand" href="#top">
+  <a class="brand" href="index.html">
     <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
   </a>
   <nav aria-label="Sections">
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#about">About</a>
     <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
   </nav>
 </header>
@@ -44,14 +45,14 @@
     <div class="hero-inner">
       <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Open source · Android · ESP32 · Python</p>
       <h1>CodeVortax</h1>
-      <p class="lead">Android apps, ESP32 firmware and small sharp command-line tools. Local-first, offline by default, no accounts and no tracking.</p>
+      <p class="lead">Android apps, ESP32 firmware and small sharp command-line tools. Local-first, offline by default, no accounts and no tracking. Every project has its own page here, not just a link to GitHub.</p>
       <div class="cta">
         <a class="btn primary" href="#projects">See the projects</a>
         <a class="btn ghost" href="https://github.com/CodeVortax">GitHub profile</a>
       </div>
       <ul class="stats">
         <li><b>13</b><span>projects</span></li>
-        <li><b>7</b><span>languages</span></li>
+        <li><b>6</b><span>languages</span></li>
         <li><b>23</b><span>stars</span></li>
         <li><b>11</b><span>AGPL-3.0</span></li>
       </ul>
@@ -61,7 +62,7 @@
   <section id="projects" class="section">
     <div class="section-head reveal">
       <h2>Projects</h2>
-      <p>Everything is public on GitHub. Most of it is AGPL-3.0; the two oldest apps are MIT.</p>
+      <p>Thirteen projects, each with its own page: what it does, how it works, how to install it and what to watch out for. Source is on GitHub.</p>
     </div>
 
     <div class="chips reveal" role="group" aria-label="Filter projects by category">
@@ -75,8 +76,7 @@
     <p class="empty" id="empty" hidden>No projects in this category.</p>
 
     <div class="grid" id="grid">
-
-      <a class="card featured reveal" href="https://github.com/CodeVortax/focus" data-cat="android" data-lang="kotlin">
+      <a class="card featured reveal" href="projects/focus.html" data-cat="android">
         <div class="card-top">
           <h3>focus</h3>
           <span class="badge">★ 6</span>
@@ -85,10 +85,10 @@
         <div class="meta">
           <span class="lang"><i style="--c:#a97bff"></i>Kotlin</span>
           <span>AGPL-3.0</span>
+          <span class="go" aria-hidden="true">Read more →</span>
         </div>
       </a>
-
-      <a class="card reveal" href="https://github.com/CodeVortax/crystal-alarm" data-cat="android" data-lang="kotlin">
+      <a class="card reveal" href="projects/crystal-alarm.html" data-cat="android">
         <div class="card-top">
           <h3>crystal-alarm</h3>
           <span class="badge">★ 1</span>
@@ -97,10 +97,10 @@
         <div class="meta">
           <span class="lang"><i style="--c:#a97bff"></i>Kotlin</span>
           <span>AGPL-3.0</span>
+          <span class="go" aria-hidden="true">Read more →</span>
         </div>
       </a>
-
-      <a class="card reveal" href="https://github.com/CodeVortax/swipe-tally" data-cat="android" data-lang="kotlin">
+      <a class="card reveal" href="projects/swipe-tally.html" data-cat="android">
         <div class="card-top">
           <h3>swipe-tally</h3>
           <span class="badge">★ 2</span>
@@ -109,34 +109,34 @@
         <div class="meta">
           <span class="lang"><i style="--c:#a97bff"></i>Kotlin</span>
           <span>MIT</span>
+          <span class="go" aria-hidden="true">Read more →</span>
         </div>
       </a>
-
-      <a class="card reveal" href="https://github.com/CodeVortax/esp-usb-bridge" data-cat="android" data-lang="java">
+      <a class="card reveal" href="projects/esp-usb-bridge.html" data-cat="android">
         <div class="card-top">
           <h3>esp-usb-bridge</h3>
           <span class="badge">★ 2</span>
         </div>
-        <p>Shares the phone's USB port with Termux as a serial-over-network port, so <code>esptool</code> just works. No root, no PC.</p>
+        <p>Shares the phone's USB port with Termux as a serial-over-network port, so esptool just works. No root, no PC.</p>
         <div class="meta">
           <span class="lang"><i style="--c:#b07219"></i>Java</span>
           <span>MIT</span>
+          <span class="go" aria-hidden="true">Read more →</span>
         </div>
       </a>
-
-      <a class="card reveal" href="https://github.com/CodeVortax/AppBlocker" data-cat="android" data-lang="shell">
+      <a class="card reveal" href="projects/appblocker.html" data-cat="android">
         <div class="card-top">
           <h3>AppBlocker</h3>
           <span class="badge">★ 0</span>
         </div>
-        <p>Magisk module that blocks or disables apps from a list, plus a local web UI on port 8765 to manage everything.</p>
+        <p>Magisk module that blocks or disables apps from a list, plus a local web UI to manage everything.</p>
         <div class="meta">
           <span class="lang"><i style="--c:#89e051"></i>Shell</span>
           <span>AGPL-3.0</span>
+          <span class="go" aria-hidden="true">Read more →</span>
         </div>
       </a>
-
-      <a class="card reveal" href="https://github.com/CodeVortax/esp32-ir-bench" data-cat="esp32" data-lang="c">
+      <a class="card reveal" href="projects/esp32-ir-bench.html" data-cat="esp32">
         <div class="card-top">
           <h3>esp32-ir-bench</h3>
           <span class="badge">★ 1</span>
@@ -145,10 +145,10 @@
         <div class="meta">
           <span class="lang"><i style="--c:#e34c26"></i>C / HTML</span>
           <span>AGPL-3.0</span>
+          <span class="go" aria-hidden="true">Read more →</span>
         </div>
       </a>
-
-      <a class="card reveal" href="https://github.com/CodeVortax/esp32-wifi-repeater-manage" data-cat="esp32" data-lang="c">
+      <a class="card reveal" href="projects/esp32-wifi-repeater-manage.html" data-cat="esp32">
         <div class="card-top">
           <h3>esp32-wifi-repeater-manage</h3>
           <span class="badge">★ 1</span>
@@ -157,10 +157,10 @@
         <div class="meta">
           <span class="lang"><i style="--c:#555555"></i>C</span>
           <span>AGPL-3.0</span>
+          <span class="go" aria-hidden="true">Read more →</span>
         </div>
       </a>
-
-      <a class="card reveal" href="https://github.com/CodeVortax/vortax" data-cat="tool" data-lang="python">
+      <a class="card reveal" href="projects/vortax.html" data-cat="tool">
         <div class="card-top">
           <h3>vortax</h3>
           <span class="badge">★ 2</span>
@@ -169,10 +169,10 @@
         <div class="meta">
           <span class="lang"><i style="--c:#3572a5"></i>Python</span>
           <span>AGPL-3.0</span>
+          <span class="go" aria-hidden="true">Read more →</span>
         </div>
       </a>
-
-      <a class="card reveal" href="https://github.com/CodeVortax/relink" data-cat="tool" data-lang="python">
+      <a class="card reveal" href="projects/relink.html" data-cat="tool">
         <div class="card-top">
           <h3>relink</h3>
           <span class="badge">★ 2</span>
@@ -181,10 +181,10 @@
         <div class="meta">
           <span class="lang"><i style="--c:#3572a5"></i>Python</span>
           <span>AGPL-3.0</span>
+          <span class="go" aria-hidden="true">Read more →</span>
         </div>
       </a>
-
-      <a class="card reveal" href="https://github.com/CodeVortax/rtlterm" data-cat="tool" data-lang="python">
+      <a class="card reveal" href="projects/rtlterm.html" data-cat="tool">
         <div class="card-top">
           <h3>rtlterm</h3>
           <span class="badge">★ 2</span>
@@ -193,22 +193,22 @@
         <div class="meta">
           <span class="lang"><i style="--c:#3572a5"></i>Python</span>
           <span>AGPL-3.0</span>
+          <span class="go" aria-hidden="true">Read more →</span>
         </div>
       </a>
-
-      <a class="card reveal" href="https://github.com/CodeVortax/qpack" data-cat="tool" data-lang="python">
+      <a class="card reveal" href="projects/qpack.html" data-cat="tool">
         <div class="card-top">
           <h3>qpack</h3>
           <span class="badge">★ 1</span>
         </div>
-        <p>Scans photos of exams and homework, deskews the pages, runs OCR and grades the answers — with an Arabic physics grader.</p>
+        <p>Scans photos of exams and homework, deskews the pages, runs OCR and grades the answers, with an Arabic physics grader.</p>
         <div class="meta">
           <span class="lang"><i style="--c:#3572a5"></i>Python</span>
           <span>AGPL-3.0</span>
+          <span class="go" aria-hidden="true">Read more →</span>
         </div>
       </a>
-
-      <a class="card reveal" href="https://github.com/CodeVortax/unisoc-imei-notes" data-cat="tool" data-lang="python">
+      <a class="card reveal" href="projects/unisoc-imei-notes.html" data-cat="tool">
         <div class="card-top">
           <h3>unisoc-imei-notes</h3>
           <span class="badge">★ 3</span>
@@ -217,25 +217,25 @@
         <div class="meta">
           <span class="lang"><i style="--c:#3572a5"></i>Python</span>
           <span>AGPL-3.0</span>
+          <span class="go" aria-hidden="true">Read more →</span>
         </div>
       </a>
-
-      <a class="card reveal" href="https://github.com/CodeVortax/twrp-theme-studio" data-cat="web" data-lang="javascript">
+      <a class="card reveal" href="projects/twrp-theme-studio.html" data-cat="web">
         <div class="card-top">
           <h3>twrp-theme-studio</h3>
           <span class="badge">★ 0</span>
         </div>
-        <p>Visual, live-preview editor for TWRP recovery themes: load a real <code>ui.xml</code>, edit it by tapping, export a flash-ready zip.</p>
+        <p>Visual, live-preview editor for TWRP recovery themes: load a real ui.xml, edit it by tapping, export a flash-ready zip.</p>
         <div class="meta">
           <span class="lang"><i style="--c:#f1e05a"></i>JavaScript</span>
           <span>AGPL-3.0</span>
+          <span class="go" aria-hidden="true">Read more →</span>
         </div>
       </a>
-
     </div>
 
     <p class="more reveal">
-      <a href="https://github.com/CodeVortax?tab=repositories">All repositories on GitHub <span aria-hidden="true">↗</span></a>
+      <a href="projects.html">Browse every project as a list <span aria-hidden="true">→</span></a>
     </p>
   </section>
 
@@ -252,7 +252,7 @@
       </article>
       <article class="col reveal">
         <h3>ESP32 firmware</h3>
-        <p>Boards that serve their own web app over WiFi — an IR test bench and a repeater that meters and limits each device — so the phone in your hand is the control panel.</p>
+        <p>Boards that serve their own web app over WiFi &mdash; an IR test bench, and a repeater that meters and limits each device &mdash; so the phone in your hand is the control panel.</p>
       </article>
       <article class="col reveal from-right">
         <h3>Termux tooling</h3>
@@ -265,13 +265,12 @@
 
 <footer>
   <p class="foot-links">
-    <a href="https://github.com/CodeVortax">GitHub</a>
+    <a href="index.html#projects">All projects</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax">Source on GitHub</a>
     <span aria-hidden="true">·</span>
     <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
-    <span aria-hidden="true">·</span>
-    <a href="https://github.com/CodeVortax?tab=repositories">All repos</a>
   </p>
-  <p class="foot-note">Also maintains kernel, module and recovery device trees for Realme Unisoc devices as forks.</p>
   <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
 </footer>
 

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rtlterm — CodeVortax</title>
+<meta name="description" content="Arabic, Persian, Urdu and Hebrew in terminals that can&#x27;t join or reverse text.">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://codevortax.github.io/projects/rtlterm.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="rtlterm — CodeVortax">
+<meta property="og:description" content="Arabic, Persian, Urdu and Hebrew in terminals that can&#x27;t join or reverse text.">
+<meta property="og:url" content="https://codevortax.github.io/projects/rtlterm.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "rtlterm", "description": "Arabic, Persian, Urdu and Hebrew in terminals that can't join or reverse text.", "codeRepository": "https://github.com/CodeVortax/rtlterm", "programmingLanguage": "Python", "license": "https://www.gnu.org/licenses/agpl-3.0.html", "url": "https://codevortax.github.io/projects/rtlterm.html"}</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="bar"></span></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About</a>
+    <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <article>
+    <header class="phead">
+      <div class="phead-inner">
+        <p class="crumb reveal"><a href="../index.html#projects">Projects</a> <span aria-hidden="true">/</span> CLI &amp; tools</p>
+        <h1 class="reveal">rtlterm</h1>
+        <p class="ptag reveal">Arabic, Persian, Urdu and Hebrew in terminals that can't join or reverse text.</p>
+        <div class="tags reveal"><span class="tag lang"><i style="--c:#3572a5"></i>Python</span><span class="tag">AGPL-3.0</span><span class="tag">★ 2</span><span class="tag">stable</span><span class="tag">CLI &amp; tools</span></div>
+        <div class="pcta reveal">
+          <a class="btn primary" href="https://github.com/CodeVortax/rtlterm">View the source</a>
+          <a class="btn ghost" href="https://github.com/CodeVortax/rtlterm/tree/main/tests">Documentation</a>
+        </div>
+      </div>
+    </header>
+    <div class="pwrap">
+      <div class="pbody">
+        <section class="pintro reveal">
+          <p>A terminal draws one character per cell, left to right, in the order it receives them. Right-to-left text then shows up with separate letters and backwards words, and Arabic mixed with English or numbers gets scrambled.</p>
+          <p>rtlterm fixes that in the terminal you already have. It is pure Python, has no dependencies, and uses only the Unicode data that ships with Python.</p>
+        </section>
+
+        <section class="psec">
+          <h2 class="sub reveal">What it does</h2>
+          <ul class="features">
+        <li class="feature reveal">
+          <h3>Shapes letters</h3>
+          <p>Picks the initial, medial, final or isolated form so words look joined, including the lam-alef ligature (لا), Persian and Urdu letters, and harakat that do not break joining.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Reorders lines</h3>
+          <p>A practical subset of Unicode UAX #9: mixed Arabic / English / numbers, digits, punctuation and mirrored brackets.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Wraps, then reorders</h3>
+          <p>Long lines are wrapped by terminal cell width and each wrapped line is reordered on its own, so wrapping no longer scrambles the text.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Right alignment</h3>
+          <p>Optionally flushes right-to-left lines to the right margin.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Keeps colours</h3>
+          <p>ANSI colour codes stay on the right words after reversing.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Leaves LTR alone</h3>
+          <p>Lines with no right-to-left text pass through untouched, so progress bars and normal output are unaffected.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Idempotent</h3>
+          <p>Running it twice on the same Arabic text is safe.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Shows its work</h3>
+          <p>rtlterm --demo prints the same sentences four ways so you can pick the block that reads correctly in your terminal.</p>
+        </li>
+          </ul>
+        </section>
+      </div>
+      <aside class="pside reveal">
+        <div class="specs">
+          <h2 class="sub">At a glance</h2>
+          <dl>
+        <div class="dl-row">
+          <dt>Requires</dt>
+          <dd>Python 3, standard library only</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Dependencies</dt>
+          <dd>None</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Languages</dt>
+          <dd>Arabic, Persian, Urdu, Pashto, Kurdish, Hebrew</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Written from</dt>
+          <dd>Unicode data shipped with Python</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Input</dt>
+          <dd>stdin, files, or the Python API</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Output</dt>
+          <dd>Presentation forms, for display only</dd>
+        </div>
+          </dl>
+        </div>
+        <a class="side-link" href="https://github.com/CodeVortax/rtlterm">Repository <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Install</h2>
+        <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>Install in Termux</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>pkg install -y python git
+git clone https://github.com/CodeVortax/rtlterm
+cd rtlterm
+pip install .</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Try it first</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>rtlterm --demo</code></pre></div>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">How to use it</h2>
+        <div class="usage">
+          <div class="usage-block reveal">
+            <h3>As a filter</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>relink search the mentalist | rtlterm
+cat arabic.txt | rtlterm
+rtlterm file.txt --width 60 --align right</code></pre></div>
+          </div>
+          <div class="usage-block reveal">
+            <h3>From Python</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>from rtlterm import fix, rprint
+
+print(fix(&quot;مسلسل The Mentalist الموسم الثالث الحلقة 17&quot;))
+rprint(&quot;مرحبا بالعالم&quot;)   # print() that fixes right-to-left text first</code></pre></div>
+          </div>
+          <div class="usage-block reveal">
+            <h3>Options</h3>
+            <p><code>fix(text, width=None, base=&quot;smart&quot;, align=&quot;auto&quot;, marks=&quot;keep&quot;, digits=None, wrap=True)</code><br><b>base</b>: <code>smart</code> follows the first word with letters, skipping ids and numbers, so <code>b24fde4d0 مسلسل ...</code> is right-to-left; <code>auto</code> follows the first letter; <code>rtl</code> / <code>ltr</code> force it.<br><b>align</b>: <code>auto</code>, <code>left</code>, <code>right</code> or <code>center</code>.<br><b>marks</b>: <code>strip</code> removes harakat, which many terminal fonts draw badly.<br><b>digits</b>: <code>arabic</code> (٠١٢) or <code>latin</code> (012).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Good to know</h2>
+        <ul class="notes">
+          <li class="reveal">The output is for <b>display only</b>. Do not save or search it &mdash; it uses presentation forms. Keep the original text and fix it at the moment you print.</li>
+          <li class="reveal">If your terminal already handles Arabic correctly, you do not need this.</li>
+          <li class="reveal">Needs a font with the Arabic presentation forms; Android's default has them.</li>
+          <li class="reveal">Not implemented: explicit embeddings and isolates, and the bracket-pair rule N0.</li>
+          <li class="reveal">Hebrew needs reordering only, since it does not need shaping.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="pn" aria-label="More projects">
+      <a class="pn-link prev" href="relink.html"><span>Previous</span><b>relink</b></a>
+      <a class="pn-link next" href="qpack.html"><span>Next</span><b>qpack</b></a>
+    </nav>
+  </article>
+</main>
+
+<footer>
+  <p class="foot-links">
+    <a href="../index.html#projects">All projects</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/rtlterm">Source on GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
+  </p>
+  <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

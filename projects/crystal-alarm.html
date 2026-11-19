@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>crystal-alarm — CodeVortax</title>
+<meta name="description" content="A clear, private alarm clock for Android.">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://codevortax.github.io/projects/crystal-alarm.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="crystal-alarm — CodeVortax">
+<meta property="og:description" content="A clear, private alarm clock for Android.">
+<meta property="og:url" content="https://codevortax.github.io/projects/crystal-alarm.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "crystal-alarm", "description": "A clear, private alarm clock for Android.", "codeRepository": "https://github.com/CodeVortax/crystal-alarm", "programmingLanguage": "Kotlin", "license": "https://www.gnu.org/licenses/agpl-3.0.html", "url": "https://codevortax.github.io/projects/crystal-alarm.html"}</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="bar"></span></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About</a>
+    <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <article>
+    <header class="phead">
+      <div class="phead-inner">
+        <p class="crumb reveal"><a href="../index.html#projects">Projects</a> <span aria-hidden="true">/</span> Android</p>
+        <h1 class="reveal">crystal-alarm</h1>
+        <p class="ptag reveal">A clear, private alarm clock for Android.</p>
+        <div class="tags reveal"><span class="tag lang"><i style="--c:#a97bff"></i>Kotlin</span><span class="tag">AGPL-3.0</span><span class="tag">★ 1</span><span class="tag">app</span><span class="tag">Android</span></div>
+        <div class="pcta reveal">
+          <a class="btn primary" href="https://github.com/CodeVortax/crystal-alarm">View the source</a>
+          <a class="btn ghost" href="https://github.com/CodeVortax/crystal-alarm/tree/main/docs">Documentation</a>
+        </div>
+      </div>
+    </header>
+    <div class="pwrap">
+      <div class="pbody">
+        <section class="pintro reveal">
+          <p>A glass-themed alarm clock with a hand-drawn analog face, countdown timer, stopwatch and Material You theming. Everything is stored locally on the phone, and the app requests no internet access at all.</p>
+        </section>
+
+        <section class="psec">
+          <h2 class="sub reveal">What it does</h2>
+          <ul class="features">
+        <li class="feature reveal">
+          <h3>Set and forget</h3>
+          <p>Create one-shot or repeating alarms, with any combination of days.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Sound picker</h3>
+          <p>Choose from system alarm, notification or ringtone sounds.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Volume ramp</h3>
+          <p>Optional: starts quiet and grows louder over 15 seconds so you wake gently.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Puzzle dismiss</h3>
+          <p>Solve a simple math problem before the alarm stops, so you cannot turn it off half-asleep.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Fullscreen alert</h3>
+          <p>The alarm opens a bright full-screen activity even when the phone is locked.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Timer</h3>
+          <p>Pomodoro, short break and long break presets plus a custom timer, a circular countdown ring, and pause / resume / add a minute on the fly.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Stopwatch</h3>
+          <p>Lap timing with millisecond precision at 20 fps, laps listed newest first.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>The clock face</h3>
+          <p>Radial gradient background, a specular highlight sweeping slowly around the face, a smooth second hand with a counterweight tail, and a digital overlay.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Settings shortcuts</h3>
+          <p>One tap to disable battery optimisation, adjust notification settings, or grant exact alarm permission on Android 14+.</p>
+        </li>
+          </ul>
+        </section>
+      </div>
+      <aside class="pside reveal">
+        <div class="specs">
+          <h2 class="sub">At a glance</h2>
+          <dl>
+        <div class="dl-row">
+          <dt>Platform</dt>
+          <dd>Android 8.0 or newer</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Internet permission</dt>
+          <dd>None declared</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Stack</dt>
+          <dd>Kotlin, Jetpack Compose</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Theming</dt>
+          <dd>Material You on Android 12+</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Alarm types</dt>
+          <dd>One-shot or repeating</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Snooze</dt>
+          <dd>1, 3, 5, 10, 15 or 30 minutes</dd>
+        </div>
+          </dl>
+        </div>
+        <a class="side-link" href="https://github.com/CodeVortax/crystal-alarm">Repository <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Install</h2>
+        <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>Build it yourself</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>cd me2008/alarm
+./build.sh debug
+# APK at app/build/outputs/apk/debug/app-debug.apk</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Requirements</h3>
+            <p>Android SDK 34 and JDK 17. The repo's building guide covers the full setup.</p>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">How to use it</h2>
+        <div class="usage">
+          <div class="usage-block reveal">
+            <h3>Everyday use</h3>
+            <p>Add alarms from the clock screen, pick days, a sound and whether you want the volume ramp or the puzzle. The timer and stopwatch live in the same app, and the theme follows your wallpaper colours on Android 12+.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Good to know</h2>
+        <ul class="notes">
+          <li class="reveal">Smart snooze (flip the phone over to snooze) is planned but not implemented yet.</li>
+          <li class="reveal">Some settings screens deep-link straight into Android's own battery and notification pages, because only the system can change those.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="pn" aria-label="More projects">
+      <a class="pn-link prev" href="focus.html"><span>Previous</span><b>focus</b></a>
+      <a class="pn-link next" href="swipe-tally.html"><span>Next</span><b>swipe-tally</b></a>
+    </nav>
+  </article>
+</main>
+
+<footer>
+  <p class="foot-links">
+    <a href="../index.html#projects">All projects</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/crystal-alarm">Source on GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
+  </p>
+  <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

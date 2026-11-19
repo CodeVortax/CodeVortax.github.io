@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>twrp-theme-studio — CodeVortax</title>
+<meta name="description" content="Visual, live-preview editor for TWRP recovery themes.">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://codevortax.github.io/projects/twrp-theme-studio.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="twrp-theme-studio — CodeVortax">
+<meta property="og:description" content="Visual, live-preview editor for TWRP recovery themes.">
+<meta property="og:url" content="https://codevortax.github.io/projects/twrp-theme-studio.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "twrp-theme-studio", "description": "Visual, live-preview editor for TWRP recovery themes.", "codeRepository": "https://github.com/CodeVortax/twrp-theme-studio", "programmingLanguage": "JavaScript", "license": "https://www.gnu.org/licenses/agpl-3.0.html", "url": "https://codevortax.github.io/projects/twrp-theme-studio.html"}</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="bar"></span></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About</a>
+    <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <article>
+    <header class="phead">
+      <div class="phead-inner">
+        <p class="crumb reveal"><a href="../index.html#projects">Projects</a> <span aria-hidden="true">/</span> Web</p>
+        <h1 class="reveal">twrp-theme-studio</h1>
+        <p class="ptag reveal">Visual, live-preview editor for TWRP recovery themes.</p>
+        <div class="tags reveal"><span class="tag lang"><i style="--c:#f1e05a"></i>JavaScript</span><span class="tag">AGPL-3.0</span><span class="tag">★ 0</span><span class="tag">app</span><span class="tag">Web</span></div>
+        <div class="pcta reveal">
+          <a class="btn primary" href="https://github.com/CodeVortax/twrp-theme-studio">View the source</a>
+          <a class="btn ghost" href="https://github.com/CodeVortax/twrp-theme-studio/tree/master/src">Documentation</a>
+        </div>
+      </div>
+    </header>
+    <div class="pwrap">
+      <div class="pbody">
+        <section class="pintro reveal">
+          <p>It loads a real TWRP theme &mdash; <code>ui.xml</code>, <code>portrait.xml</code> and the images &mdash; renders it with a proper theme engine that understands templates, styles, conditions, lists, keyboards and sliders, and lets you edit the theme by tapping the elements in a live preview.</p>
+          <p>Variable edits patch only the changed line, so the git diff stays small and reviewable.</p>
+        </section>
+
+        <section class="psec">
+          <h2 class="sub reveal">What it does</h2>
+          <ul class="features">
+        <li class="feature reveal">
+          <h3>Preview mode</h3>
+          <p>Tap buttons to navigate like the real recovery, pick any page from the dropdown, and use ← to go back.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Select mode</h3>
+          <p>Tap any element to inspect it, drag to move, and nudge with the arrow keys (Shift moves 8px). Edit position, anchor, text, colours, font, image and style, or delete elements.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Colours</h3>
+          <p>Every theme colour with alpha, plus the hard-coded ones (keyboard, navbar) grouped for replace-everywhere.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Layout</h3>
+          <p>Font sizes and every numeric variable &mdash; header height, indent, list heights &mdash; driven by sliders.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Images</h3>
+          <p>Tap or drop to replace, auto-resized to the original size, with tint and reset.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Presets</h3>
+          <p>Dracula, Nord, AMOLED, Catppuccin and more, or a random palette; image buttons and icons are recoloured to match.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Simulate</h3>
+          <p>Battery level, clock, Samsung navbar, keyboard, busy state and font scale, all preview-only.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>History and saving</h3>
+          <p>Undo and redo, Save with optional git commit and push, and Export ui.zip which does not touch the source.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Shortcuts</h3>
+          <p>Ctrl+S saves, Ctrl+Z / Ctrl+Y undo and redo, Esc deselects.</p>
+        </li>
+          </ul>
+        </section>
+      </div>
+      <aside class="pside reveal">
+        <div class="specs">
+          <h2 class="sub">At a glance</h2>
+          <dl>
+        <div class="dl-row">
+          <dt>Requires</dt>
+          <dd>Node.js, express</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Run</dt>
+          <dd>npm start, then http://localhost:8080</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Env</dt>
+          <dd>PORT, HOST, THEME_DIR, DENSITY</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Default density</dt>
+          <dd>portrait_hdpi</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Reads</dt>
+          <dd>ui.xml, portrait.xml and images</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Exports</dt>
+          <dd>A flash-ready ui.zip</dd>
+        </div>
+          </dl>
+        </div>
+        <a class="side-link" href="https://github.com/CodeVortax/twrp-theme-studio">Repository <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Install</h2>
+        <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>Run it</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>npm install          # only needs express
+npm start            # http://localhost:8080</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Edit the real recovery source</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>THEME_DIR=/path/to/android_bootable_recovery/gui/theme npm start</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">3</span>
+          <div class="step-body">
+            <h3>Environment</h3>
+            <p><code>PORT</code>, <code>HOST</code>, <code>THEME_DIR</code> and <code>DENSITY</code> (default <code>portrait_hdpi</code>).</p>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">How to use it</h2>
+        <div class="usage">
+          <div class="usage-block reveal">
+            <h3>A normal session</h3>
+            <p>Start in Preview mode to find the screen you want, switch to Select mode, tap the element, change its properties in the sidebar, then Save or Export ui.zip. Try a preset first if you only want a new colour scheme.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Good to know</h2>
+        <ul class="notes">
+          <li class="reveal">Fonts are not in the repo, so the preview uses Roboto Condensed look-alikes. Use <b>Simulate &rarr; Font scale</b> if sizes feel off.</li>
+          <li class="reveal">Edits to elements, styles and fonts rewrite the XML tab-indented: comments are kept, blank lines are dropped.</li>
+          <li class="reveal">The bundled theme is a copy; point <code>THEME_DIR</code> at your own recovery source to edit the real one.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="pn" aria-label="More projects">
+      <a class="pn-link prev" href="unisoc-imei-notes.html"><span>Previous</span><b>unisoc-imei-notes</b></a>
+    </nav>
+  </article>
+</main>
+
+<footer>
+  <p class="foot-links">
+    <a href="../index.html#projects">All projects</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/twrp-theme-studio">Source on GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
+  </p>
+  <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

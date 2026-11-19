@@ -1,0 +1,51 @@
+{
+  "order": 13,
+  "slug": "twrp-theme-studio",
+  "name": "twrp-theme-studio",
+  "tagline": "Visual, live-preview editor for TWRP recovery themes.",
+  "cat": "web",
+  "lang": "JavaScript",
+  "color": "#f1e05a",
+  "stars": 0,
+  "license": "AGPL-3.0",
+  "status": "app",
+  "repo": "https://github.com/CodeVortax/twrp-theme-studio",
+  "branch": "master",
+  "docs": "src",
+  "specs": [
+    ["Requires", "Node.js, express"],
+    ["Run", "npm start, then http://localhost:8080"],
+    ["Env", "PORT, HOST, THEME_DIR, DENSITY"],
+    ["Default density", "portrait_hdpi"],
+    ["Reads", "ui.xml, portrait.xml and images"],
+    ["Exports", "A flash-ready ui.zip"]
+  ],
+  "intro": [
+    "It loads a real TWRP theme &mdash; <code>ui.xml</code>, <code>portrait.xml</code> and the images &mdash; renders it with a proper theme engine that understands templates, styles, conditions, lists, keyboards and sliders, and lets you edit the theme by tapping the elements in a live preview.",
+    "Variable edits patch only the changed line, so the git diff stays small and reviewable."
+  ],
+  "features": [
+    ["Preview mode", "Tap buttons to navigate like the real recovery, pick any page from the dropdown, and use ← to go back."],
+    ["Select mode", "Tap any element to inspect it, drag to move, and nudge with the arrow keys (Shift moves 8px). Edit position, anchor, text, colours, font, image and style, or delete elements."],
+    ["Colours", "Every theme colour with alpha, plus the hard-coded ones (keyboard, navbar) grouped for replace-everywhere."],
+    ["Layout", "Font sizes and every numeric variable &mdash; header height, indent, list heights &mdash; driven by sliders."],
+    ["Images", "Tap or drop to replace, auto-resized to the original size, with tint and reset."],
+    ["Presets", "Dracula, Nord, AMOLED, Catppuccin and more, or a random palette; image buttons and icons are recoloured to match."],
+    ["Simulate", "Battery level, clock, Samsung navbar, keyboard, busy state and font scale, all preview-only."],
+    ["History and saving", "Undo and redo, Save with optional git commit and push, and Export ui.zip which does not touch the source."],
+    ["Shortcuts", "Ctrl+S saves, Ctrl+Z / Ctrl+Y undo and redo, Esc deselects."]
+  ],
+  "install": [
+    { "title": "Run it", "code": "npm install          # only needs express\nnpm start            # http://localhost:8080" },
+    { "title": "Edit the real recovery source", "code": "THEME_DIR=/path/to/android_bootable_recovery/gui/theme npm start" },
+    { "title": "Environment", "body": "<code>PORT</code>, <code>HOST</code>, <code>THEME_DIR</code> and <code>DENSITY</code> (default <code>portrait_hdpi</code>)." }
+  ],
+  "usage": [
+    { "title": "A normal session", "body": "Start in Preview mode to find the screen you want, switch to Select mode, tap the element, change its properties in the sidebar, then Save or Export ui.zip. Try a preset first if you only want a new colour scheme." }
+  ],
+  "notes": [
+    "Fonts are not in the repo, so the preview uses Roboto Condensed look-alikes. Use <b>Simulate &rarr; Font scale</b> if sizes feel off.",
+    "Edits to elements, styles and fonts rewrite the XML tab-indented: comments are kept, blank lines are dropped.",
+    "The bundled theme is a copy; point <code>THEME_DIR</code> at your own recovery source to edit the real one."
+  ]
+}

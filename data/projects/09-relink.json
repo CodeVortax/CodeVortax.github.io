@@ -1,0 +1,52 @@
+{
+  "order": 9,
+  "slug": "relink",
+  "name": "relink",
+  "tagline": "A downloader for the sites that don't give you a real file link.",
+  "cat": "tool",
+  "lang": "Python",
+  "color": "#3572a5",
+  "stars": 2,
+  "license": "AGPL-3.0",
+  "status": "beta",
+  "repo": "https://github.com/CodeVortax/relink",
+  "branch": "main",
+  "docs": "templates",
+  "specs": [
+    ["Requires", "Python 3.9+, PyYAML"],
+    ["Optional", "yt-dlp and ffmpeg for generic mode"],
+    ["Job state", "~/.relink/jobs"],
+    ["Templates", "templates/&lt;site&gt;.yml"],
+    ["Resume", "HTTP Range on .part files"],
+    ["Built for", "Termux first"]
+  ],
+  "intro": [
+    "Download a movie or an episode from a site and you often get a <b>temporary</b> link that expires after a few minutes. If the connection drops halfway, the link is dead and the download is lost &mdash; painful on mobile data.",
+    "relink's answer: a download should never be tied to one link. It remembers the <b>page</b> and <b>how to get the link from it</b>, so when the link expires or the connection drops it fetches a fresh link and continues from the same byte."
+  ],
+  "features": [
+    ["Survives bad connections", "Retry, refresh the link, resume. No manual restarts."],
+    ["Continuous link refresh", "Expired or tokenized links are replaced automatically, mid-download."],
+    ["Template mode", "Small YAML step lists (<code>get</code>, <code>post</code>, <code>form</code>, <code>find</code>, <code>choose</code>) that describe how a site goes from page to direct file link."],
+    ["Generic mode", "If no template matches, the URL goes to yt-dlp with settings tuned for bad connections."],
+    ["Easy to extend", "Adding a site means writing a small template file, not new code."],
+    ["Remembers jobs", "Job state is saved per job, so <code>relink resume</code> continues after a reboot."],
+    ["Discovery tools", "A small search API for episodes, a server lister, and <code>relink discover</code> to fingerprint and group new sites."]
+  ],
+  "install": [
+    { "title": "Install in Termux", "code": "pkg install -y python git\ngit clone https://github.com/CodeVortax/relink\ncd relink\npip install -e .          # installs pyyaml and the `relink` command" },
+    { "title": "Optional generic mode", "code": "pip install yt-dlp && pkg install -y ffmpeg" }
+  ],
+  "usage": [
+    { "title": "Downloading", "code": "relink search the mentalist               # small search API (episodes)\nrelink servers <episode-url>              # servers on a page and which have an adapter\nrelink get <episode-url>                  # best quality, saved to ~/storage/downloads/relink\nrelink get <url> --quality low --out ~/storage/downloads\nrelink get <url> --dry                    # only print the direct link\nrelink list                               # jobs and progress\nrelink resume                             # continue unfinished jobs" },
+    { "title": "Behind a Cloudflare challenge", "code": "relink get <url> --cookie \"cf_clearance=...\"" },
+    { "title": "Forcing yt-dlp", "code": "relink get https://www.youtube.com/watch?v=...   # no template: uses yt-dlp\nrelink get <url> --ytdlp                         # force it even if a template matches" },
+    { "title": "How a template works", "body": "A template says how to get from a page to a direct file link: read the page's server list, open the download host, pick a quality, submit the form. The engine is in <code>relink/engine.py</code>." }
+  ],
+  "notes": [
+    "Only download content you have the right to download, and respect each site's terms.",
+    "Templates need only Python and PyYAML; yt-dlp is optional.",
+    "Sites change, so a template can break. <code>relink servers</code> tells you which hosts still have an adapter.",
+    "Open work: adapters for more hosts, series mode, and a site analyzer that drafts a template from a fingerprint bundle."
+  ]
+}

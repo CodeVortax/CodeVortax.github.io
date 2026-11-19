@@ -94,6 +94,44 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* ---- copy buttons on code blocks ---- */
+  document.querySelectorAll('.codewrap').forEach(function (wrap) {
+    var btn = wrap.querySelector('.copy');
+    var code = wrap.querySelector('code');
+    if (!btn || !code) return;
+
+    btn.addEventListener('click', function () {
+      var text = code.textContent;
+
+      function done() {
+        btn.textContent = 'Copied';
+        btn.classList.add('done');
+        setTimeout(function () {
+          btn.textContent = 'Copy';
+          btn.classList.remove('done');
+        }, 1600);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else {
+        fallback();
+      }
+
+      function fallback() {
+        var area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        try { document.execCommand('copy'); done(); } catch (e) { btn.textContent = 'Select all'; }
+        document.body.removeChild(area);
+      }
+    });
+  });
+
   /* ---- footer year ---- */
   var year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());

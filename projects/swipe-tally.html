@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>swipe-tally — CodeVortax</title>
+<meta name="description" content="Counts Shorts, Reels and TikTok swipes correctly.">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://codevortax.github.io/projects/swipe-tally.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="swipe-tally — CodeVortax">
+<meta property="og:description" content="Counts Shorts, Reels and TikTok swipes correctly.">
+<meta property="og:url" content="https://codevortax.github.io/projects/swipe-tally.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "swipe-tally", "description": "Counts Shorts, Reels and TikTok swipes correctly.", "codeRepository": "https://github.com/CodeVortax/swipe-tally", "programmingLanguage": "Kotlin", "license": "https://opensource.org/licenses/MIT", "url": "https://codevortax.github.io/projects/swipe-tally.html"}</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="bar"></span></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About</a>
+    <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <article>
+    <header class="phead">
+      <div class="phead-inner">
+        <p class="crumb reveal"><a href="../index.html#projects">Projects</a> <span aria-hidden="true">/</span> Android</p>
+        <h1 class="reveal">swipe-tally</h1>
+        <p class="ptag reveal">Counts Shorts, Reels and TikTok swipes correctly.</p>
+        <div class="tags reveal"><span class="tag lang"><i style="--c:#a97bff"></i>Kotlin</span><span class="tag">MIT</span><span class="tag">★ 2</span><span class="tag">app</span><span class="tag">Android</span></div>
+        <div class="pcta reveal">
+          <a class="btn primary" href="https://github.com/CodeVortax/swipe-tally">View the source</a>
+          <a class="btn ghost" href="https://github.com/CodeVortax/swipe-tally/tree/main/app">Documentation</a>
+        </div>
+      </div>
+    </header>
+    <div class="pwrap">
+      <div class="pbody">
+        <section class="pintro reveal">
+          <p>A small Android app that counts swipes in YouTube Shorts, Instagram Reels and TikTok &mdash; and does it correctly. It exists as a readable test bed for one problem: how do you count short-video swipes reliably with an AccessibilityService?</p>
+          <p>The obvious approach, counting <code>TYPE_VIEW_SCROLLED</code> events, gives wrong numbers. Android merges events that arrive close together, so several fast swipes become one. Small drags fire events even though the video snapped back. Comment sheets and carousels scroll too and fire the same events. One swipe fires a burst of events while the page animates, and a fixed &quot;one count per 700 ms&quot; rule throws away real fast swipes.</p>
+        </section>
+
+        <section class="psec">
+          <h2 class="sub reveal">What it does</h2>
+          <ul class="features">
+        <li class="feature reveal">
+          <h3>It counts video changes, not scroll events</h3>
+          <p>A swipe is counted only after the finger has stopped and the page has settled, and only if the video really changed.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Settle timer</h3>
+          <p>Every scroll event restarts a short timer (250 ms by default). When it fires the page has stopped moving and the whole burst is judged once.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Index mode</h3>
+          <p>A pager usually reports which page is showing (<code>fromIndex == toIndex</code>), which is a far better signal than scroll deltas.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Feed detection</h3>
+          <p>A fingerprint decides whether you are actually inside a short-form feed before any counting happens.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Floating pill</h3>
+          <p>Shows forward swipes, back swipes, today's total and which signal detected the feed.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Correction and tuning</h3>
+          <p>The main screen shows per-app counts for today and recent days with manual correction buttons, a reset, the settle time, and a flip-direction switch for apps that report scroll direction the other way round.</p>
+        </li>
+          </ul>
+        </section>
+      </div>
+      <aside class="pside reveal">
+        <div class="specs">
+          <h2 class="sub">At a glance</h2>
+          <dl>
+        <div class="dl-row">
+          <dt>Platform</dt>
+          <dd>Android with AccessibilityService</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Internet permission</dt>
+          <dd>None declared</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Dependencies</dt>
+          <dd>None</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Size</dt>
+          <dd>About 600 lines of Kotlin</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Apps covered</dt>
+          <dd>YouTube Shorts, Instagram Reels, TikTok</dd>
+        </div>
+        <div class="dl-row">
+          <dt>License</dt>
+          <dd>MIT, free to copy into your own project</dd>
+        </div>
+          </dl>
+        </div>
+        <a class="side-link" href="https://github.com/CodeVortax/swipe-tally">Repository <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Install</h2>
+        <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>Build in Termux</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>pkg install openjdk-17 gradle aapt2
+# Android SDK platform 34 + build-tools must exist
+# local.properties needs sdk.dir=/path/to/android-sdk
+git clone https://github.com/CodeVortax/swipe-tally
+cd swipe-tally
+gradle assembleDebug
+cp app/build/outputs/apk/debug/app-debug.apk ~/storage/downloads/SwipeTally.apk</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Enable the service</h3>
+            <p>Install the APK, open the app, tap <b>Open accessibility settings</b> and enable <b>Swipe Tally</b>.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">3</span>
+          <div class="step-body">
+            <h3>If aapt2 fails</h3>
+            <p>Uncomment the <code>aapt2</code> line in <code>gradle.properties</code>.</p>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">How to use it</h2>
+        <div class="usage">
+          <div class="usage-block reveal">
+            <h3>Reuse it in your own app</h3>
+            <p>You only need three pieces: the accessibility config, the <code>settle</code> runnable in <code>SwipeService.kt</code>, and <code>Detector.fingerprint()</code>. This is exactly the method Focus uses for its Shorts counter.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Good to know</h2>
+        <ul class="notes">
+          <li class="reveal">MIT licensed: copy any part of it into your own project.</li>
+          <li class="reveal">No internet permission, no dependencies and no analytics &mdash; everything stays on the phone.</li>
+          <li class="reveal">App updates can change view ids; the detector may need adjusting for a new version of a feed app.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="pn" aria-label="More projects">
+      <a class="pn-link prev" href="crystal-alarm.html"><span>Previous</span><b>crystal-alarm</b></a>
+      <a class="pn-link next" href="esp-usb-bridge.html"><span>Next</span><b>esp-usb-bridge</b></a>
+    </nav>
+  </article>
+</main>
+
+<footer>
+  <p class="foot-links">
+    <a href="../index.html#projects">All projects</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/swipe-tally">Source on GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
+  </p>
+  <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

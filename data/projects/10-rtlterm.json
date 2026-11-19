@@ -1,0 +1,53 @@
+{
+  "order": 10,
+  "slug": "rtlterm",
+  "name": "rtlterm",
+  "tagline": "Arabic, Persian, Urdu and Hebrew in terminals that can't join or reverse text.",
+  "cat": "tool",
+  "lang": "Python",
+  "color": "#3572a5",
+  "stars": 2,
+  "license": "AGPL-3.0",
+  "status": "stable",
+  "repo": "https://github.com/CodeVortax/rtlterm",
+  "branch": "main",
+  "docs": "tests",
+  "specs": [
+    ["Requires", "Python 3, standard library only"],
+    ["Dependencies", "None"],
+    ["Languages", "Arabic, Persian, Urdu, Pashto, Kurdish, Hebrew"],
+    ["Written from", "Unicode data shipped with Python"],
+    ["Input", "stdin, files, or the Python API"],
+    ["Output", "Presentation forms, for display only"]
+  ],
+  "intro": [
+    "A terminal draws one character per cell, left to right, in the order it receives them. Right-to-left text then shows up with separate letters and backwards words, and Arabic mixed with English or numbers gets scrambled.",
+    "rtlterm fixes that in the terminal you already have. It is pure Python, has no dependencies, and uses only the Unicode data that ships with Python."
+  ],
+  "features": [
+    ["Shapes letters", "Picks the initial, medial, final or isolated form so words look joined, including the lam-alef ligature (لا), Persian and Urdu letters, and harakat that do not break joining."],
+    ["Reorders lines", "A practical subset of Unicode UAX #9: mixed Arabic / English / numbers, digits, punctuation and mirrored brackets."],
+    ["Wraps, then reorders", "Long lines are wrapped by terminal cell width and each wrapped line is reordered on its own, so wrapping no longer scrambles the text."],
+    ["Right alignment", "Optionally flushes right-to-left lines to the right margin."],
+    ["Keeps colours", "ANSI colour codes stay on the right words after reversing."],
+    ["Leaves LTR alone", "Lines with no right-to-left text pass through untouched, so progress bars and normal output are unaffected."],
+    ["Idempotent", "Running it twice on the same Arabic text is safe."],
+    ["Shows its work", "rtlterm --demo prints the same sentences four ways so you can pick the block that reads correctly in your terminal."]
+  ],
+  "install": [
+    { "title": "Install in Termux", "code": "pkg install -y python git\ngit clone https://github.com/CodeVortax/rtlterm\ncd rtlterm\npip install ." },
+    { "title": "Try it first", "code": "rtlterm --demo" }
+  ],
+  "usage": [
+    { "title": "As a filter", "code": "relink search the mentalist | rtlterm\ncat arabic.txt | rtlterm\nrtlterm file.txt --width 60 --align right" },
+    { "title": "From Python", "code": "from rtlterm import fix, rprint\n\nprint(fix(\"مسلسل The Mentalist الموسم الثالث الحلقة 17\"))\nrprint(\"مرحبا بالعالم\")   # print() that fixes right-to-left text first" },
+    { "title": "Options", "body": "<code>fix(text, width=None, base=&quot;smart&quot;, align=&quot;auto&quot;, marks=&quot;keep&quot;, digits=None, wrap=True)</code><br><b>base</b>: <code>smart</code> follows the first word with letters, skipping ids and numbers, so <code>b24fde4d0 مسلسل ...</code> is right-to-left; <code>auto</code> follows the first letter; <code>rtl</code> / <code>ltr</code> force it.<br><b>align</b>: <code>auto</code>, <code>left</code>, <code>right</code> or <code>center</code>.<br><b>marks</b>: <code>strip</code> removes harakat, which many terminal fonts draw badly.<br><b>digits</b>: <code>arabic</code> (٠١٢) or <code>latin</code> (012)." }
+  ],
+  "notes": [
+    "The output is for <b>display only</b>. Do not save or search it &mdash; it uses presentation forms. Keep the original text and fix it at the moment you print.",
+    "If your terminal already handles Arabic correctly, you do not need this.",
+    "Needs a font with the Arabic presentation forms; Android's default has them.",
+    "Not implemented: explicit embeddings and isolates, and the bracket-pair rule N0.",
+    "Hebrew needs reordering only, since it does not need shaping."
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "order": 6,
+  "slug": "esp32-ir-bench",
+  "name": "esp32-ir-bench",
+  "tagline": "Build virtual remotes. Capture codes from your old clicker. Fire them back from your phone.",
+  "cat": "esp32",
+  "lang": "C / HTML",
+  "color": "#e34c26",
+  "stars": 1,
+  "license": "AGPL-3.0",
+  "status": "beta",
+  "repo": "https://github.com/CodeVortax/esp32-ir-bench",
+  "branch": "master",
+  "docs": "docs",
+  "specs": [
+    ["Chip", "Classic ESP32"],
+    ["Framework", "PlatformIO / Arduino"],
+    ["Storage", "LittleFS for remotes, phone for photos"],
+    ["Access", "http://&lt;esp32-ip&gt; from any phone"],
+    ["Setup hotspot", "IR-Bench / irbench123"],
+    ["Setup page", "http://192.168.4.1/setup"]
+  ],
+  "intro": [
+    "An ESP32 that learns infrared codes from a real remote and replays them through an IR LED, with a phone-friendly web app served by the chip itself. No cloud, no app store install: join the WiFi and open the board's IP.",
+    "Remotes survive reboots because names, layouts and codes are stored in flash. Button photos stay in your phone's browser, because they are too big for the chip."
+  ],
+  "features": [
+    ["Two ways to build a remote", "Add circle, square, pill or bar buttons one by one, or photograph your real remote and tap where each button is."],
+    ["Learn mode", "Hold a button, press the same key on the old remote, and the ESP32 decodes protocol, bits and code."],
+    ["Run mode", "Tap a button to send the code out of the IR LED. Photo remotes show invisible hotspots over the real picture."],
+    ["Persistent remotes", "Names, layouts and codes live in flash (LittleFS), so a power cut does not lose your remotes."],
+    ["No app, no cloud", "The whole UI is served by the chip and works over its own hotspot if there is no router."],
+    ["WiFi from your phone", "No password baked into the code &mdash; you enter the network from the setup page."]
+  ],
+  "table": {
+    "title": "Wiring",
+    "cols": ["Part", "Wire it to", "Label on the board"],
+    "rows": [
+      ["IR receiver VCC", "3.3 V", "3V3"],
+      ["IR receiver GND (middle leg)", "Ground", "GND"],
+      ["IR receiver OUT (signal)", "GPIO 4", "D4"],
+      ["IR LED long leg (+)", "GPIO 14", "D14"],
+      ["IR LED short leg (&minus;)", "Ground", "GND"]
+    ]
+  },
+  "install": [
+    { "title": "1. Build one flashable file", "code": "pip install -U platformio\n./build.sh merge          # -> dist/esp32dev-merged.bin" },
+    { "title": "Can't build on a phone?", "body": "Push to GitHub and download the <code>firmware</code> artifact from Actions instead." },
+    { "title": "2. Flash it at offset 0x0", "body": "See the flashing guide in <code>docs/guides/flashing.md</code>." },
+    { "title": "3. Set up WiFi from your phone", "body": "The board opens a hotspot named <b>IR-Bench</b> (password <code>irbench123</code>). Join it, open <code>http://192.168.4.1/setup</code>, pick your network, enter the password and tap <b>Save and restart</b>. Afterwards find its IP on the serial monitor at 115200 or in your router's device list." },
+    { "title": "4. Change networks later", "body": "Open <code>/setup</code> again, or hold <b>BOOT</b> for 5 seconds to forget the saved WiFi." }
+  ],
+  "usage": [
+    { "title": "Using the bench", "body": "Open the board's IP, create a remote, then switch a button into learn mode and press the matching key on the old remote. Once learned, tapping the button fires the code." }
+  ],
+  "notes": [
+    "Power the receiver from <code>3V3</code>, never <code>VIN</code> &mdash; VIN is 5 V and would put 5 V on the signal pin.",
+    "Receiver pinouts differ. With the dark window facing you and the legs down, most read VCC, GND, OUT or OUT, GND, VCC from left to right.",
+    "Change the GPIO numbers in <code>include/config.h</code>.",
+    "A bare LED works for bench testing because bursts are milliseconds long, but add a 100 to 150 ohm resistor as soon as you have one."
+  ]
+}

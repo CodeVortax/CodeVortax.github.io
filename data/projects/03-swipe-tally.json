@@ -1,0 +1,48 @@
+{
+  "order": 3,
+  "slug": "swipe-tally",
+  "name": "swipe-tally",
+  "tagline": "Counts Shorts, Reels and TikTok swipes correctly.",
+  "cat": "android",
+  "lang": "Kotlin",
+  "color": "#a97bff",
+  "stars": 2,
+  "license": "MIT",
+  "status": "app",
+  "repo": "https://github.com/CodeVortax/swipe-tally",
+  "branch": "main",
+  "docs": "app",
+  "specs": [
+    ["Platform", "Android with AccessibilityService"],
+    ["Internet permission", "None declared"],
+    ["Dependencies", "None"],
+    ["Size", "About 600 lines of Kotlin"],
+    ["Apps covered", "YouTube Shorts, Instagram Reels, TikTok"],
+    ["License", "MIT, free to copy into your own project"]
+  ],
+  "intro": [
+    "A small Android app that counts swipes in YouTube Shorts, Instagram Reels and TikTok &mdash; and does it correctly. It exists as a readable test bed for one problem: how do you count short-video swipes reliably with an AccessibilityService?",
+    "The obvious approach, counting <code>TYPE_VIEW_SCROLLED</code> events, gives wrong numbers. Android merges events that arrive close together, so several fast swipes become one. Small drags fire events even though the video snapped back. Comment sheets and carousels scroll too and fire the same events. One swipe fires a burst of events while the page animates, and a fixed &quot;one count per 700 ms&quot; rule throws away real fast swipes."
+  ],
+  "features": [
+    ["It counts video changes, not scroll events", "A swipe is counted only after the finger has stopped and the page has settled, and only if the video really changed."],
+    ["Settle timer", "Every scroll event restarts a short timer (250 ms by default). When it fires the page has stopped moving and the whole burst is judged once."],
+    ["Index mode", "A pager usually reports which page is showing (<code>fromIndex == toIndex</code>), which is a far better signal than scroll deltas."],
+    ["Feed detection", "A fingerprint decides whether you are actually inside a short-form feed before any counting happens."],
+    ["Floating pill", "Shows forward swipes, back swipes, today's total and which signal detected the feed."],
+    ["Correction and tuning", "The main screen shows per-app counts for today and recent days with manual correction buttons, a reset, the settle time, and a flip-direction switch for apps that report scroll direction the other way round."]
+  ],
+  "install": [
+    { "title": "Build in Termux", "code": "pkg install openjdk-17 gradle aapt2\n# Android SDK platform 34 + build-tools must exist\n# local.properties needs sdk.dir=/path/to/android-sdk\ngit clone https://github.com/CodeVortax/swipe-tally\ncd swipe-tally\ngradle assembleDebug\ncp app/build/outputs/apk/debug/app-debug.apk ~/storage/downloads/SwipeTally.apk" },
+    { "title": "Enable the service", "body": "Install the APK, open the app, tap <b>Open accessibility settings</b> and enable <b>Swipe Tally</b>." },
+    { "title": "If aapt2 fails", "body": "Uncomment the <code>aapt2</code> line in <code>gradle.properties</code>." }
+  ],
+  "usage": [
+    { "title": "Reuse it in your own app", "body": "You only need three pieces: the accessibility config, the <code>settle</code> runnable in <code>SwipeService.kt</code>, and <code>Detector.fingerprint()</code>. This is exactly the method Focus uses for its Shorts counter." }
+  ],
+  "notes": [
+    "MIT licensed: copy any part of it into your own project.",
+    "No internet permission, no dependencies and no analytics &mdash; everything stays on the phone.",
+    "App updates can change view ids; the detector may need adjusting for a new version of a feed app."
+  ]
+}

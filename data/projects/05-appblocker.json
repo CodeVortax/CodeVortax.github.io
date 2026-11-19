@@ -1,0 +1,52 @@
+{
+  "order": 5,
+  "slug": "appblocker",
+  "name": "AppBlocker",
+  "tagline": "Block, disable or whitelist apps from one local web UI.",
+  "cat": "android",
+  "lang": "Shell",
+  "color": "#89e051",
+  "stars": 0,
+  "license": "AGPL-3.0",
+  "status": "module",
+  "repo": "https://github.com/CodeVortax/AppBlocker",
+  "branch": "main",
+  "docs": "",
+  "specs": [
+    ["Type", "Magisk module"],
+    ["Requires", "Magisk, root"],
+    ["Web UI", "Port 8765, on the phone or over LAN"],
+    ["Applies changes", "Automatically within about 20 seconds"],
+    ["Log", "/data/adb/appblocker/appblocker.log"],
+    ["Reboot needed", "Only once, after install"]
+  ],
+  "intro": [
+    "A Magisk module that removes or blocks apps on a <b>Block</b> list, disables apps on a <b>Disable</b> list and exempts anything on a <b>Whitelist</b> &mdash; with a small local web UI so you never have to edit files by hand.",
+    "After the first reboot, edits made through the UI or by hand take effect automatically within about 20 seconds. No reboot needed for routine changes."
+  ],
+  "features": [
+    ["Lists tab", "Block, Disable and Whitelist panels plus an &quot;add a package&quot; box."],
+    ["Apps tab", "Browse every installed app, split into three risk tiers."],
+    ["Hosts tab", "Network-wide domain blocking."],
+    ["Logs tab", "Recently installed apps, a full activity log and a debug log."],
+    ["Settings tab", "Lock mode, so the lists cannot be changed casually."],
+    ["Launcher detection and app icons", "The UI shows real icons and knows which packages are launchers."],
+    ["Block is sticky", "A blocked app is uninstalled for the current user and kept that way &mdash; reinstalling it gets it removed again automatically."],
+    ["Disable is reversible", "A disabled app is turned off with <code>pm disable-user</code>: the icon disappears and the app cannot run, but nothing is deleted."],
+    ["Whitelist wins", "An app on the whitelist is left alone even if it is still listed in blocklist.txt or disablelist.txt. The entries are not deleted, just ignored."]
+  ],
+  "install": [
+    { "title": "Install the module", "body": "Copy <code>AppBlocker.zip</code> to the device, then Magisk app &rarr; Modules &rarr; Install from storage &rarr; select the zip." },
+    { "title": "Reboot once", "body": "This is only required the first time, to start the background service. After that the lists apply on their own." },
+    { "title": "Open the UI", "body": "On the phone: <code>http://127.0.0.1:8765/cgi-bin/index.cgi</code>. From another device on the same WiFi, use the phone's LAN IP instead of <code>127.0.0.1</code>." }
+  ],
+  "usage": [
+    { "title": "Manual editing still works", "code": "# lists live in /data/adb/appblocker/\nblocklist.txt\ndisablelist.txt\nwhitelist.txt\n\n# what the module actually did\ntail -f /data/adb/appblocker/appblocker.log" },
+    { "title": "Pausing everything", "body": "Whitelist the apps you want left alone, or disable or remove the module in Magisk and reboot." }
+  ],
+  "notes": [
+    "<b>Only target third-party apps</b> or ones you have confirmed are safe to remove. Disabling core system packages (anything <code>com.android.*</code> or an unfamiliar OEM service) can cause boot loops.",
+    "When unsure, use <b>Disable</b>, not Block, and test one app at a time.",
+    "The activity log shows exactly what the module has done, so check it before blaming the module for a missing app."
+  ]
+}

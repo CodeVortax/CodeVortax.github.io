@@ -1,0 +1,48 @@
+{
+  "order": 12,
+  "slug": "unisoc-imei-notes",
+  "name": "unisoc-imei-notes",
+  "tagline": "Where a Unisoc phone keeps its IMEI, serial and MAC, and how the tools read them.",
+  "cat": "tool",
+  "lang": "Python",
+  "color": "#3572a5",
+  "stars": 3,
+  "license": "AGPL-3.0",
+  "status": "research",
+  "repo": "https://github.com/CodeVortax/unisoc-imei-notes",
+  "branch": "main",
+  "docs": "docs",
+  "specs": [
+    ["Subject", "Unisoc / Spreadtrum NV memory"],
+    ["Sources", "WriteIMEI Tool R21, SPRDNVEditor, XDA, one real NV backup"],
+    ["Analysed device", "Realme RMX3830, Android 17"],
+    ["Restoration tools", "Realme C21Y and Realme C51"],
+    ["Scanner", "Read-only"],
+    ["Python", "3, standard library"],
+    ["Tools", "scan_backup.py, parse_miscdata.py, idtool.py"]
+  ],
+  "intro": [
+    "Research notes on where a Unisoc (Spreadtrum) phone keeps its IMEI, serial number and MAC addresses, and how the common tools read or write them. The notes are built from the source of the Spreadtrum factory tool WriteIMEI R21, the C# NV editor SPRDNVEditor, the XDA thread on rooting an SP6820, and a read-only analysis of one real NV backup.",
+    "The repository also carries device-specific restoration tools for the Realme C21Y and the Realme C51, with a walkthrough of how they work."
+  ],
+  "features": [
+    ["Documented NV layout", "Where each identifier lives, which partitions hold it, and how the factory tools address it."],
+    ["Tool analysis", "How WriteIMEI and SPRDNVEditor are built, and what their binaries actually do."],
+    ["Read-only scanner", "Finds identifiers in a backup folder and can mask them in the output."],
+    ["Restoration tools", "Complete, documented procedures for the Realme C21Y (RMX3261 / RMX3263) and the Realme C51 (RMX3830)."],
+    ["Honest scope", "Every inference is marked as an inference, and the limits of the analysis are written down rather than glossed over."]
+  ],
+  "install": [
+    { "title": "No install", "body": "The tools are plain Python scripts with no dependencies. Clone the repo and run them where the backup is." },
+    { "title": "Get it", "code": "git clone https://github.com/CodeVortax/unisoc-imei-notes\ncd unisoc-imei-notes" }
+  ],
+  "usage": [
+    { "title": "Quick start", "code": "python3 tools/scan_backup.py /path/to/backup_folder\npython3 tools/scan_backup.py /path/to/backup_folder --reported 123456789012345 --mask\npython3 tools/scan_backup.py /path/to/backup_folder --serial YOURSERIAL\npython3 tools/parse_miscdata.py /path/to/miscdata.bin --mask\npython3 tools/idtool.py get /path/to/dump_folder --mask\npython3 tools/idtool.py patch-imei /path/to/l_fixnv1_a.bin --imei1 YOURIMEI1 --imei2 YOURIMEI2 --out /path/to/l_fixnv1_a_patched.bin" },
+    { "title": "Read the docs", "body": "The numbered docs in <code>docs/</code> walk from the NV layout through each tool; <code>HOW_IT_WORKS_C21Y.md</code> and <code>devices/c51/README.md</code> cover the restoration tools." }
+  ],
+  "notes": [
+    "The scanner only <b>reads</b>. Nothing here writes identifiers to a phone.",
+    "WriteIMEI's real phone protocol lives inside a closed <code>PhoneCommand.dll</code> that is not in the source zip, so that part is described from the outside.",
+    "<b>Legal:</b> the IMEI identifies a handset to mobile networks. Restoring the number printed on your own device is a normal repair task; writing an IMEI that does not belong to the device is illegal in many countries and can get the phone blocked. These notes explain how the software is built &mdash; they are not a procedure for changing identifiers."
+  ]
+}

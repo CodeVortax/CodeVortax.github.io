@@ -1,0 +1,73 @@
+{
+  "order": 7,
+  "slug": "esp32-wifi-repeater-manage",
+  "name": "esp32-wifi-repeater-manage",
+  "tagline": "Share your WiFi on purpose. See it. Limit it.",
+  "cat": "esp32",
+  "lang": "C",
+  "color": "#555555",
+  "stars": 1,
+  "license": "AGPL-3.0",
+  "status": "beta",
+  "repo": "https://github.com/CodeVortax/esp32-wifi-repeater-manage",
+  "branch": "master",
+  "docs": "docs",
+  "specs": [
+    ["Board", "Classic ESP32, 4 MB flash"],
+    ["Framework", "PlatformIO / Arduino"],
+    ["Mode", "AP + STA with NAT"],
+    ["Default quota", "1 GB per device per day"],
+    ["Setup hotspot", "AOSP / 12345678"],
+    ["Default login", "admin / admin1234, change it"],
+    ["Control", "Web dashboard and Telegram bot"],
+    ["Cloud", "None"]
+  ],
+  "intro": [
+    "A repeater built on one idea: whoever uses your internet should be visible, and capped. The ESP32 joins your router as a client and opens its own network next to it. Phones and laptops connect to the ESP32 and their traffic is forwarded to the router through NAT.",
+    "Because every byte passes through the chip, it can count usage per device, cut a device off when it hits its daily quota, show the domains being looked up, and report to you over Telegram. Everything runs on the chip: no cloud, no account, no app."
+  ],
+  "features": [
+    ["AP + STA with NAT", "NAT turns on as soon as the router gives an address, and again after every reconnect."],
+    ["Background connect", "Startup never waits for the router, so the dashboard is reachable immediately."],
+    ["DNS through the ESP32", "DHCP hands out the ESP32 as the DNS server, so every lookup is seen and then forwarded upstream."],
+    ["Per-device counting", "Counted at the network-stack level, in both directions, per device MAC."],
+    ["Daily quota", "Default 1 GB per device per day, changeable per device, or 0 for unlimited."],
+    ["Block and whitelist", "A blocked device stays connected but gets no traffic; whitelisted devices are never limited."],
+    ["Local midnight reset", "Time-zone and daylight-saving aware (Egypt by default), and correct even when the board reboots across midnight."],
+    ["Remembers devices", "Limits, whitelist, blocks and counters are kept in flash, written every minute and only when something changed."],
+    ["Router-style dashboard", "Login screen, then Overview, Users, Apps, Speed, Settings and System. Arabic and English, full right-to-left."],
+    ["Per-app usage", "Named users with usage per category and per app (YouTube, TikTok, Facebook, WhatsApp, Telegram, Google, Snapchat), with new domains teachable from the dashboard."],
+    ["Blocking and filtering", "Built-in 18 KB ad / tracker / site list plus your own hosts file, a choice of filtering DNS (Cloudflare Family, AdGuard), and an Internet off switch."],
+    ["Speed limits", "For the whole network, a default per user, and per user."],
+    ["Update over WiFi", "Send <code>ota-firmware.bin</code> or <code>ota-ui.bin</code> from System &gt; Update. A bad firmware rolls back by itself."],
+    ["Telegram bot", "Status, block, unblock, whitelist, quota and ping, restricted to the chat ID you saved."]
+  ],
+  "table": {
+    "title": "Telegram commands",
+    "cols": ["Command", "Does"],
+    "rows": [
+      ["/status", "Every device with usage and state"],
+      ["/block &lt;mac&gt; · /unblock &lt;mac&gt;", "Cut off or restore a device"],
+      ["/whitelist &lt;mac&gt; · /unwhitelist &lt;mac&gt;", "Exempt a device from the quota"],
+      ["/setquota &lt;mac&gt; &lt;mb&gt;", "Daily limit in MB, 0 means unlimited"],
+      ["/ping &lt;host&gt;", "Ping from the repeater"]
+    ]
+  },
+  "install": [
+    { "title": "1. Get the firmware", "body": "Take the <code>firmware</code> artifact from the latest Actions run, or a file from Releases. It is one file that already contains the web UI." },
+    { "title": "Or build it yourself", "code": "git clone https://github.com/CodeVortax/esp32-wifi-repeater-manage\ncd esp32-wifi-repeater-manage\npip install -U platformio\n./build.sh merge        # -> dist/esp32dev-merged.bin" },
+    { "title": "On Termux", "body": "<code>./build.sh bin</code> also copies the firmware to your Downloads folder." },
+    { "title": "2. Flash it at offset 0x0", "code": "esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash 0x0 esp32-wifi-repeater.bin" },
+    { "title": "Or flash from Chrome", "body": "ESP Web Tools works from the browser, which is handy when you only have a phone." },
+    { "title": "3. First run", "body": "Join the WiFi <b>AOSP</b> (password <code>12345678</code>) and open <code>http://192.168.4.1</code>. Log in as <code>admin</code> / <code>admin1234</code>, then in Settings enter your home WiFi, a new repeater password and a <b>new dashboard password</b>. The ESP32 reboots and joins your router." }
+  ],
+  "usage": [
+    { "title": "Running it", "body": "Open the dashboard at the board's IP, or talk to the bot. Every change is validated before it is saved, and every state-changing call has cross-site protection." }
+  ],
+  "notes": [
+    "Change the default dashboard password immediately &mdash; the page keeps warning you until you do.",
+    "The dashboard, the API and the live WebSocket all require a signed-in session, with lock-out after 5 wrong tries.",
+    "Hold <b>BOOT</b> for 5 seconds to wipe the saved settings if you lock yourself out.",
+    "A reboot across midnight still resets quotas correctly."
+  ]
+}

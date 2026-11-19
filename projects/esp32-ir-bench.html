@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>esp32-ir-bench — CodeVortax</title>
+<meta name="description" content="Build virtual remotes. Capture codes from your old clicker. Fire them back from your phone.">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://codevortax.github.io/projects/esp32-ir-bench.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="esp32-ir-bench — CodeVortax">
+<meta property="og:description" content="Build virtual remotes. Capture codes from your old clicker. Fire them back from your phone.">
+<meta property="og:url" content="https://codevortax.github.io/projects/esp32-ir-bench.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "esp32-ir-bench", "description": "Build virtual remotes. Capture codes from your old clicker. Fire them back from your phone.", "codeRepository": "https://github.com/CodeVortax/esp32-ir-bench", "programmingLanguage": "C / HTML", "license": "https://www.gnu.org/licenses/agpl-3.0.html", "url": "https://codevortax.github.io/projects/esp32-ir-bench.html"}</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="bar"></span></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About</a>
+    <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <article>
+    <header class="phead">
+      <div class="phead-inner">
+        <p class="crumb reveal"><a href="../index.html#projects">Projects</a> <span aria-hidden="true">/</span> ESP32</p>
+        <h1 class="reveal">esp32-ir-bench</h1>
+        <p class="ptag reveal">Build virtual remotes. Capture codes from your old clicker. Fire them back from your phone.</p>
+        <div class="tags reveal"><span class="tag lang"><i style="--c:#e34c26"></i>C / HTML</span><span class="tag">AGPL-3.0</span><span class="tag">★ 1</span><span class="tag">beta</span><span class="tag">ESP32</span></div>
+        <div class="pcta reveal">
+          <a class="btn primary" href="https://github.com/CodeVortax/esp32-ir-bench">View the source</a>
+          <a class="btn ghost" href="https://github.com/CodeVortax/esp32-ir-bench/tree/master/docs">Documentation</a>
+        </div>
+      </div>
+    </header>
+    <div class="pwrap">
+      <div class="pbody">
+        <section class="pintro reveal">
+          <p>An ESP32 that learns infrared codes from a real remote and replays them through an IR LED, with a phone-friendly web app served by the chip itself. No cloud, no app store install: join the WiFi and open the board's IP.</p>
+          <p>Remotes survive reboots because names, layouts and codes are stored in flash. Button photos stay in your phone's browser, because they are too big for the chip.</p>
+        </section>
+
+        <section class="psec">
+          <h2 class="sub reveal">What it does</h2>
+          <ul class="features">
+        <li class="feature reveal">
+          <h3>Two ways to build a remote</h3>
+          <p>Add circle, square, pill or bar buttons one by one, or photograph your real remote and tap where each button is.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Learn mode</h3>
+          <p>Hold a button, press the same key on the old remote, and the ESP32 decodes protocol, bits and code.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Run mode</h3>
+          <p>Tap a button to send the code out of the IR LED. Photo remotes show invisible hotspots over the real picture.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Persistent remotes</h3>
+          <p>Names, layouts and codes live in flash (LittleFS), so a power cut does not lose your remotes.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>No app, no cloud</h3>
+          <p>The whole UI is served by the chip and works over its own hotspot if there is no router.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>WiFi from your phone</h3>
+          <p>No password baked into the code &mdash; you enter the network from the setup page.</p>
+        </li>
+          </ul>
+        </section>
+      </div>
+      <aside class="pside reveal">
+        <div class="specs">
+          <h2 class="sub">At a glance</h2>
+          <dl>
+        <div class="dl-row">
+          <dt>Chip</dt>
+          <dd>Classic ESP32</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Framework</dt>
+          <dd>PlatformIO / Arduino</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Storage</dt>
+          <dd>LittleFS for remotes, phone for photos</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Access</dt>
+          <dd>http://&lt;esp32-ip&gt; from any phone</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Setup hotspot</dt>
+          <dd>IR-Bench / irbench123</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Setup page</dt>
+          <dd>http://192.168.4.1/setup</dd>
+        </div>
+          </dl>
+        </div>
+        <a class="side-link" href="https://github.com/CodeVortax/esp32-ir-bench">Repository <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Install</h2>
+        <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>Build one flashable file</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>pip install -U platformio
+./build.sh merge          # -&gt; dist/esp32dev-merged.bin</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Can't build on a phone?</h3>
+            <p>Push to GitHub and download the <code>firmware</code> artifact from Actions instead.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">3</span>
+          <div class="step-body">
+            <h3>Flash it at offset 0x0</h3>
+            <p>See the flashing guide in <code>docs/guides/flashing.md</code>.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">4</span>
+          <div class="step-body">
+            <h3>Set up WiFi from your phone</h3>
+            <p>The board opens a hotspot named <b>IR-Bench</b> (password <code>irbench123</code>). Join it, open <code>http://192.168.4.1/setup</code>, pick your network, enter the password and tap <b>Save and restart</b>. Afterwards find its IP on the serial monitor at 115200 or in your router's device list.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">5</span>
+          <div class="step-body">
+            <h3>Change networks later</h3>
+            <p>Open <code>/setup</code> again, or hold <b>BOOT</b> for 5 seconds to forget the saved WiFi.</p>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">How to use it</h2>
+        <div class="usage">
+          <div class="usage-block reveal">
+            <h3>Using the bench</h3>
+            <p>Open the board's IP, create a remote, then switch a button into learn mode and press the matching key on the old remote. Once learned, tapping the button fires the code.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="table-block reveal">
+        <h2 class="sub">Wiring</h2>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th scope="col">Part</th><th scope="col">Wire it to</th><th scope="col">Label on the board</th></tr></thead>
+            <tbody>
+            <tr><td>IR receiver VCC</td><td>3.3 V</td><td>3V3</td></tr>
+            <tr><td>IR receiver GND (middle leg)</td><td>Ground</td><td>GND</td></tr>
+            <tr><td>IR receiver OUT (signal)</td><td>GPIO 4</td><td>D4</td></tr>
+            <tr><td>IR LED long leg (+)</td><td>GPIO 14</td><td>D14</td></tr>
+            <tr><td>IR LED short leg (&minus;)</td><td>Ground</td><td>GND</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Good to know</h2>
+        <ul class="notes">
+          <li class="reveal">Power the receiver from <code>3V3</code>, never <code>VIN</code> &mdash; VIN is 5 V and would put 5 V on the signal pin.</li>
+          <li class="reveal">Receiver pinouts differ. With the dark window facing you and the legs down, most read VCC, GND, OUT or OUT, GND, VCC from left to right.</li>
+          <li class="reveal">Change the GPIO numbers in <code>include/config.h</code>.</li>
+          <li class="reveal">A bare LED works for bench testing because bursts are milliseconds long, but add a 100 to 150 ohm resistor as soon as you have one.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="pn" aria-label="More projects">
+      <a class="pn-link prev" href="appblocker.html"><span>Previous</span><b>AppBlocker</b></a>
+      <a class="pn-link next" href="esp32-wifi-repeater-manage.html"><span>Next</span><b>esp32-wifi-repeater-manage</b></a>
+    </nav>
+  </article>
+</main>
+
+<footer>
+  <p class="foot-links">
+    <a href="../index.html#projects">All projects</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/esp32-ir-bench">Source on GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
+  </p>
+  <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

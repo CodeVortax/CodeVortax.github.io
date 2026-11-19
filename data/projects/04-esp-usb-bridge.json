@@ -1,0 +1,51 @@
+{
+  "order": 4,
+  "slug": "esp-usb-bridge",
+  "name": "esp-usb-bridge",
+  "tagline": "Flash and monitor an ESP32 from Termux. No root, no PC.",
+  "cat": "android",
+  "lang": "Java",
+  "color": "#b07219",
+  "stars": 2,
+  "license": "MIT",
+  "status": "app",
+  "repo": "https://github.com/CodeVortax/esp-usb-bridge",
+  "branch": "main",
+  "docs": "docs",
+  "specs": [
+    ["Platform", "Android 8.0 or newer"],
+    ["Bridge port", "127.0.0.1:2217 (RFC 2217)"],
+    ["Status port", "2218, read-only"],
+    ["Chips", "CP210x, CH340/CH34x, FTDI, PL2303, ESP32 native USB"],
+    ["Max speed", "921600 baud"],
+    ["Cloud", "None"]
+  ],
+  "intro": [
+    "Android does not let Termux open USB devices, and without root there is no <code>/dev/ttyUSB0</code>. This app fixes that from the other side: it is allowed to use the USB port, so it does, and it serves that port to Termux on <code>127.0.0.1:2217</code> using RFC 2217 &mdash; a standard <code>esptool</code> and <code>pySerial</code> already understand.",
+    "Automatic reset into the bootloader, baud-rate changes and the serial monitor all work, so flashing from a phone feels like flashing from a PC."
+  ],
+  "features": [
+    ["Real flashing", "<code>esptool</code> over the bridge, with automatic bootloader reset on DTR/RTS and speeds up to 921600."],
+    ["The espb command", "<code>start</code>, <code>status</code>, <code>flash</code>, <code>erase</code>, <code>info</code>, <code>mac</code>, <code>monitor</code>, <code>log</code> and <code>doctor</code>."],
+    ["Starts itself", "<code>espb flash</code> opens the app and starts the bridge if it is not running yet."],
+    ["Scriptable logs", "<code>espb log --seconds 20 --out boot.log --reset</code> prints timestamped lines and exits."],
+    ["Many chips", "CP210x, CH340/CH34x, FTDI, PL2303 and the ESP32's built-in USB, through usb-serial-for-android."],
+    ["Local only", "The port listens on <code>127.0.0.1</code>, so nothing else on your network can reach the board."],
+    ["Tested protocol", "CI runs the protocol against a real pySerial RFC 2217 client on every push."]
+  ],
+  "install": [
+    { "title": "1. The app", "body": "Take <code>esp-usb-bridge-debug.apk</code> from the latest release or Actions run and install it. Android will ask you to allow installs from this source." },
+    { "title": "2. Termux", "code": "curl -fsSL https://raw.githubusercontent.com/CodeVortax/esp-usb-bridge/main/termux/install.sh | bash" },
+    { "title": "3. The board", "body": "Plug it in with a <b>data</b> USB cable and an OTG adapter. Tap OK on the USB permission prompt, ideally <b>Always</b>." }
+  ],
+  "usage": [
+    { "title": "Everyday commands", "code": "espb start                       # open the app and start the bridge\nespb status                      # running? which device? client connected?\nespb flash firmware.bin          # write firmware at 0x0\nespb monitor                     # serial monitor\nespb log --seconds 20 --reset    # capture boot log and exit\nespb doctor                      # check the Termux side" }
+  ],
+  "notes": [
+    "<b>Wrong boot mode detected (0x13):</b> the board did not enter download mode. Hold BOOT while it says Connecting..., or pass <code>--manual</code>.",
+    "<b>The bridge did not come up:</b> plug the board in first, then run <code>espb start</code> and tap OK within 45 seconds.",
+    "If it stops with the screen off, turn off battery optimisation for the app.",
+    "Only one client at a time &mdash; close <code>espb monitor</code> before flashing.",
+    "An architecture diagram and flashing notes are in <code>docs/</code>."
+  ]
+}

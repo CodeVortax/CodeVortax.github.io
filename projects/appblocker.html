@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AppBlocker — CodeVortax</title>
+<meta name="description" content="Block, disable or whitelist apps from one local web UI.">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://codevortax.github.io/projects/appblocker.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="AppBlocker — CodeVortax">
+<meta property="og:description" content="Block, disable or whitelist apps from one local web UI.">
+<meta property="og:url" content="https://codevortax.github.io/projects/appblocker.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "AppBlocker", "description": "Block, disable or whitelist apps from one local web UI.", "codeRepository": "https://github.com/CodeVortax/AppBlocker", "programmingLanguage": "Shell", "license": "https://www.gnu.org/licenses/agpl-3.0.html", "url": "https://codevortax.github.io/projects/appblocker.html"}</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="bar"></span></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About</a>
+    <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <article>
+    <header class="phead">
+      <div class="phead-inner">
+        <p class="crumb reveal"><a href="../index.html#projects">Projects</a> <span aria-hidden="true">/</span> Android</p>
+        <h1 class="reveal">AppBlocker</h1>
+        <p class="ptag reveal">Block, disable or whitelist apps from one local web UI.</p>
+        <div class="tags reveal"><span class="tag lang"><i style="--c:#89e051"></i>Shell</span><span class="tag">AGPL-3.0</span><span class="tag">★ 0</span><span class="tag">Magisk module</span><span class="tag">Android</span></div>
+        <div class="pcta reveal">
+          <a class="btn primary" href="https://github.com/CodeVortax/AppBlocker">View the source</a>
+        </div>
+      </div>
+    </header>
+    <div class="pwrap">
+      <div class="pbody">
+        <section class="pintro reveal">
+          <p>A Magisk module that removes or blocks apps on a <b>Block</b> list, disables apps on a <b>Disable</b> list and exempts anything on a <b>Whitelist</b> &mdash; with a small local web UI so you never have to edit files by hand.</p>
+          <p>After the first reboot, edits made through the UI or by hand take effect automatically within about 20 seconds. No reboot needed for routine changes.</p>
+        </section>
+
+        <section class="psec">
+          <h2 class="sub reveal">What it does</h2>
+          <ul class="features">
+        <li class="feature reveal">
+          <h3>Lists tab</h3>
+          <p>Block, Disable and Whitelist panels plus an &quot;add a package&quot; box.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Apps tab</h3>
+          <p>Browse every installed app, split into three risk tiers.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Hosts tab</h3>
+          <p>Network-wide domain blocking.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Logs tab</h3>
+          <p>Recently installed apps, a full activity log and a debug log.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Settings tab</h3>
+          <p>Lock mode, so the lists cannot be changed casually.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Launcher detection and app icons</h3>
+          <p>The UI shows real icons and knows which packages are launchers.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Block is sticky</h3>
+          <p>A blocked app is uninstalled for the current user and kept that way &mdash; reinstalling it gets it removed again automatically.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Disable is reversible</h3>
+          <p>A disabled app is turned off with <code>pm disable-user</code>: the icon disappears and the app cannot run, but nothing is deleted.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Whitelist wins</h3>
+          <p>An app on the whitelist is left alone even if it is still listed in blocklist.txt or disablelist.txt. The entries are not deleted, just ignored.</p>
+        </li>
+          </ul>
+        </section>
+      </div>
+      <aside class="pside reveal">
+        <div class="specs">
+          <h2 class="sub">At a glance</h2>
+          <dl>
+        <div class="dl-row">
+          <dt>Type</dt>
+          <dd>Magisk module</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Requires</dt>
+          <dd>Magisk, root</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Web UI</dt>
+          <dd>Port 8765, on the phone or over LAN</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Applies changes</dt>
+          <dd>Automatically within about 20 seconds</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Log</dt>
+          <dd>/data/adb/appblocker/appblocker.log</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Reboot needed</dt>
+          <dd>Only once, after install</dd>
+        </div>
+          </dl>
+        </div>
+        <a class="side-link" href="https://github.com/CodeVortax/AppBlocker">Repository <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Install</h2>
+        <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>Install the module</h3>
+            <p>Copy <code>AppBlocker.zip</code> to the device, then Magisk app &rarr; Modules &rarr; Install from storage &rarr; select the zip.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Reboot once</h3>
+            <p>This is only required the first time, to start the background service. After that the lists apply on their own.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">3</span>
+          <div class="step-body">
+            <h3>Open the UI</h3>
+            <p>On the phone: <code>http://127.0.0.1:8765/cgi-bin/index.cgi</code>. From another device on the same WiFi, use the phone's LAN IP instead of <code>127.0.0.1</code>.</p>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">How to use it</h2>
+        <div class="usage">
+          <div class="usage-block reveal">
+            <h3>Manual editing still works</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code># lists live in /data/adb/appblocker/
+blocklist.txt
+disablelist.txt
+whitelist.txt
+
+# what the module actually did
+tail -f /data/adb/appblocker/appblocker.log</code></pre></div>
+          </div>
+          <div class="usage-block reveal">
+            <h3>Pausing everything</h3>
+            <p>Whitelist the apps you want left alone, or disable or remove the module in Magisk and reboot.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Good to know</h2>
+        <ul class="notes">
+          <li class="reveal"><b>Only target third-party apps</b> or ones you have confirmed are safe to remove. Disabling core system packages (anything <code>com.android.*</code> or an unfamiliar OEM service) can cause boot loops.</li>
+          <li class="reveal">When unsure, use <b>Disable</b>, not Block, and test one app at a time.</li>
+          <li class="reveal">The activity log shows exactly what the module has done, so check it before blaming the module for a missing app.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="pn" aria-label="More projects">
+      <a class="pn-link prev" href="esp-usb-bridge.html"><span>Previous</span><b>esp-usb-bridge</b></a>
+      <a class="pn-link next" href="esp32-ir-bench.html"><span>Next</span><b>esp32-ir-bench</b></a>
+    </nav>
+  </article>
+</main>
+
+<footer>
+  <p class="foot-links">
+    <a href="../index.html#projects">All projects</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/AppBlocker">Source on GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
+  </p>
+  <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

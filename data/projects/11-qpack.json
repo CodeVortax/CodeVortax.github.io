@@ -1,0 +1,53 @@
+{
+  "order": 11,
+  "slug": "qpack",
+  "name": "qpack",
+  "tagline": "Scan exam pages, read the Arabic physics, grade the answers.",
+  "cat": "tool",
+  "lang": "Python",
+  "color": "#3572a5",
+  "stars": 1,
+  "license": "AGPL-3.0",
+  "status": "beta",
+  "repo": "https://github.com/CodeVortax/qpack",
+  "branch": "main",
+  "docs": "tests",
+  "specs": [
+    ["Requires", "Python, Pillow, numpy"],
+    ["Vision", "Google Gemini (gemini-2.5-flash)"],
+    ["Key", "GEMINI_API_KEY"],
+    ["Format", ".qpack = zip of manifest.json, questions.json, images/"],
+    ["Offline", "Falls back to a built-in workbook fixture"],
+    ["Focus", "Egyptian secondary physics, chapter 2"]
+  ],
+  "intro": [
+    "qpack is a command-line study tool for students and teachers. It takes photos of exams and homework workbooks, deskews the pages, runs OCR through the Gemini Vision API, evaluates multiple-choice answers, groups questions by physical concept and formula, and packages everything into portable <code>.qpack</code> archives.",
+    "With no API key or while offline it falls back to a built-in fixture instead of failing, so the whole pipeline stays testable."
+  ],
+  "features": [
+    ["Vision OCR", "Talks to Google Gemini through plain <code>requests</code> &mdash; no heavy SDK to install."],
+    ["Watermark-resistant deskewing", "Estimates page tilt from horizontal edge projection variance, straightens rotated captures and filters out background teacher watermarks."],
+    ["First-class Arabic", "Full bidirectional Unicode support, Arabic-Indic numeral normalisation (٠١٢٣ ↔ 0123) and standard multiple-choice letter normalisation."],
+    ["Maths as LaTeX", "Physics equations are parsed and rendered as standard LaTeX."],
+    ["Pencil working and review flags", "Crops both the printed question and the handwritten margin, scores OCR confidence, and flags faint handwriting below 70% for manual review."],
+    ["Concept and formula grouping", "Organises questions by physical concept (e.g. عزم الازدواج المغناطيسي) or by underlying formula (e.g. τ = B I A N sinθ), not only by number."],
+    ["Portable bundles", "A .qpack is a plain ZIP: <code>manifest.json</code>, <code>questions.json</code> and the cropped images."],
+    ["Tested", "Unit tests for Arabic handling, deskewing, packing, grading and the CLI."]
+  ],
+  "install": [
+    { "title": "1. Prerequisites in Termux", "code": "pkg install -y python python-pillow python-numpy" },
+    { "title": "2. Install qpack", "code": "cd ~/qpack\npip install -e ." },
+    { "title": "3. Set the API key", "code": "export GEMINI_API_KEY=\"your-google-gemini-api-key\"" }
+  ],
+  "usage": [
+    { "title": "Scan a page into an archive", "code": "qpack scan page1.jpg -o page1.qpack" },
+    { "title": "Check answers and flag weak reads", "code": "qpack check page1.qpack" },
+    { "title": "Inspect questions and solutions", "code": "qpack show page1.qpack --group-by concept   # default\nqpack show page1.qpack --group-by formula\nqpack show page1.qpack --group-by number" },
+    { "title": "What check prints", "body": "Question number, concept, your choice, the verified correct choice, status (<b>✓ RIGHT</b> / <b>✗ WRONG</b> / <b>- SKIPPED</b>), OCR confidence for the margin working, and a review flag for low-confidence reads." }
+  ],
+  "notes": [
+    "Phase 1. The Gemini call is optional, and the offline fixture is a real chapter 2 workbook, not random data.",
+    "Scanning sends page images to Google's API when a key is set &mdash; that is the only network step.",
+    "Bundles are ordinary zips, so you can inspect or edit them with any zip tool."
+  ]
+}

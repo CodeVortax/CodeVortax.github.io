@@ -1,0 +1,55 @@
+{
+  "order": 1,
+  "slug": "focus",
+  "name": "focus",
+  "tagline": "Study first, then spend what you earn.",
+  "cat": "android",
+  "lang": "Kotlin",
+  "color": "#a97bff",
+  "stars": 6,
+  "license": "AGPL-3.0",
+  "status": "beta",
+  "repo": "https://github.com/CodeVortax/focus",
+  "branch": "main",
+  "docs": "docs",
+  "specs": [
+    ["Platform", "Android 8.0 (API 26) or newer"],
+    ["Package", "com.barq.focus"],
+    ["Internet permission", "None declared"],
+    ["Stack", "Kotlin, Jetpack Compose"],
+    ["Build", "JDK 17, SDK 34, Gradle 8.7"],
+    ["Languages", "English, Arabic (RTL), Russian, German, French"]
+  ],
+  "intro": [
+    "Focus Study Gate turns a study plan into a reward system and puts a soft gate in front of the apps that eat your time. You split the day into subjects with task lists and generous timers; finishing tasks fills a daily <b>treat bank</b> of minutes, and those minutes are what you spend at the gate.",
+    "Everything runs on the phone. There is no account, no server, and the manifest declares no internet permission."
+  ],
+  "features": [
+    ["Subjects and tasks", "Per-subject checklists with a pausable, extendable timer, an alarm with sound, and spoken reminders when you run over. Long-press a card to edit, delete or change its media."],
+    ["Treat bank", "Each subject's reward is split across its tasks and paid out as you tick them off. The bank resets daily."],
+    ["Weekly tasks", "Do them any day of the week. The sooner you finish, the bigger the multiplier &mdash; x2 down to x1, then x0.5 once late."],
+    ["Soft gate", "Pick which tracked apps get gated. Opening one shows a &quot;what for?&quot; overlay with a short countdown and a choice of passes."],
+    ["Not-free blocks", "Scheduled windows where only an allow-list of apps works. Optional strict mode removes the emergency override."],
+    ["Shorts and Reels counting", "Detects YouTube Shorts, Instagram Reels and TikTok, counts swipes, and lets you leave."],
+    ["Strict Shorts mode", "The gate opens at once with no &quot;finish this one&quot;, and the only way on is a sentence you type by hand (paste is blocked)."],
+    ["Usage screen", "Digital Wellbeing-style screen time for every app: week chart, donut, per-app list, hourly strip and day-by-day history."],
+    ["Notes", "Text, checklists, rich formatting, labels, pin, archive, trash, search, voice notes and attachments (photos, videos, files, links, linked notes)."],
+    ["PDF library and reader", "Built in, with hand-off to Episteme Reader if you have it installed."],
+    ["Motivation", "Streaks, XP and levels, 46 badges (15 hidden &quot;Honest Moments&quot; ones), 17 short games for breaks, and four home-screen widgets."],
+    ["Parked thoughts", "Capture a distracting idea straight into Notes without leaving the subject."]
+  ],
+  "install": [
+    { "title": "Build from source", "code": "git clone https://github.com/CodeVortax/focus\ncd focus\n# local.properties must contain sdk.dir=/path/to/android-sdk\ngradle assembleDebug\n# APK: app/build/outputs/apk/debug/app-debug.apk" },
+    { "title": "Install on the phone", "code": "adb install -r app/build/outputs/apk/debug/app-debug.apk" },
+    { "title": "First run", "body": "The home screen guides you through three grants: <b>Usage access</b>, <b>Display over other apps</b> and, for Shorts counting, the <b>Accessibility service</b>. Then set Battery &rarr; Unrestricted so your ROM does not kill the watcher." }
+  ],
+  "usage": [
+    { "title": "Daily loop", "body": "Set up subjects and tasks, run a subject timer, tick tasks off to fill the treat bank, then spend minutes at the gate on Shorts, gated apps or the built-in player. When the bank is empty the gate offers short free passes behind a countdown, or lets you leave." }
+  ],
+  "notes": [
+    "Currently a beta. Expect rough edges and back up your data before updating.",
+    "No internet permission: usage, notes, settings and rewards never leave the device.",
+    "Leave presses Back to exit most apps, but sends browsers Home so your tabs and history are kept.",
+    "Focus reuses the swipe-counting method from swipe-tally for its Shorts counter."
+  ]
+}

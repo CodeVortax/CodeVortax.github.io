@@ -1,0 +1,48 @@
+{
+  "order": 2,
+  "slug": "crystal-alarm",
+  "name": "crystal-alarm",
+  "tagline": "A clear, private alarm clock for Android.",
+  "cat": "android",
+  "lang": "Kotlin",
+  "color": "#a97bff",
+  "stars": 1,
+  "license": "AGPL-3.0",
+  "status": "app",
+  "repo": "https://github.com/CodeVortax/crystal-alarm",
+  "branch": "main",
+  "docs": "docs",
+  "specs": [
+    ["Platform", "Android 8.0 or newer"],
+    ["Internet permission", "None declared"],
+    ["Stack", "Kotlin, Jetpack Compose"],
+    ["Theming", "Material You on Android 12+"],
+    ["Alarm types", "One-shot or repeating"],
+    ["Snooze", "1, 3, 5, 10, 15 or 30 minutes"]
+  ],
+  "intro": [
+    "A glass-themed alarm clock with a hand-drawn analog face, countdown timer, stopwatch and Material You theming. Everything is stored locally on the phone, and the app requests no internet access at all."
+  ],
+  "features": [
+    ["Set and forget", "Create one-shot or repeating alarms, with any combination of days."],
+    ["Sound picker", "Choose from system alarm, notification or ringtone sounds."],
+    ["Volume ramp", "Optional: starts quiet and grows louder over 15 seconds so you wake gently."],
+    ["Puzzle dismiss", "Solve a simple math problem before the alarm stops, so you cannot turn it off half-asleep."],
+    ["Fullscreen alert", "The alarm opens a bright full-screen activity even when the phone is locked."],
+    ["Timer", "Pomodoro, short break and long break presets plus a custom timer, a circular countdown ring, and pause / resume / add a minute on the fly."],
+    ["Stopwatch", "Lap timing with millisecond precision at 20 fps, laps listed newest first."],
+    ["The clock face", "Radial gradient background, a specular highlight sweeping slowly around the face, a smooth second hand with a counterweight tail, and a digital overlay."],
+    ["Settings shortcuts", "One tap to disable battery optimisation, adjust notification settings, or grant exact alarm permission on Android 14+."]
+  ],
+  "install": [
+    { "title": "Build it yourself", "code": "cd me2008/alarm\n./build.sh debug\n# APK at app/build/outputs/apk/debug/app-debug.apk" },
+    { "title": "Requirements", "body": "Android SDK 34 and JDK 17. The repo's building guide covers the full setup." }
+  ],
+  "usage": [
+    { "title": "Everyday use", "body": "Add alarms from the clock screen, pick days, a sound and whether you want the volume ramp or the puzzle. The timer and stopwatch live in the same app, and the theme follows your wallpaper colours on Android 12+." }
+  ],
+  "notes": [
+    "Smart snooze (flip the phone over to snooze) is planned but not implemented yet.",
+    "Some settings screens deep-link straight into Android's own battery and notification pages, because only the system can change those."
+  ]
+}

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vortax — CodeVortax</title>
+<meta name="description" content="Run and manage QEMU virtual machines from one small CLI and a web dashboard.">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://codevortax.github.io/projects/vortax.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="vortax — CodeVortax">
+<meta property="og:description" content="Run and manage QEMU virtual machines from one small CLI and a web dashboard.">
+<meta property="og:url" content="https://codevortax.github.io/projects/vortax.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "vortax", "description": "Run and manage QEMU virtual machines from one small CLI and a web dashboard.", "codeRepository": "https://github.com/CodeVortax/vortax", "programmingLanguage": "Python", "license": "https://www.gnu.org/licenses/agpl-3.0.html", "url": "https://codevortax.github.io/projects/vortax.html"}</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="bar"></span></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About</a>
+    <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <article>
+    <header class="phead">
+      <div class="phead-inner">
+        <p class="crumb reveal"><a href="../index.html#projects">Projects</a> <span aria-hidden="true">/</span> CLI &amp; tools</p>
+        <h1 class="reveal">vortax</h1>
+        <p class="ptag reveal">Run and manage QEMU virtual machines from one small CLI and a web dashboard.</p>
+        <div class="tags reveal"><span class="tag lang"><i style="--c:#3572a5"></i>Python</span><span class="tag">AGPL-3.0</span><span class="tag">★ 2</span><span class="tag">stable</span><span class="tag">CLI &amp; tools</span></div>
+        <div class="pcta reveal">
+          <a class="btn primary" href="https://github.com/CodeVortax/vortax">View the source</a>
+          <a class="btn ghost" href="https://github.com/CodeVortax/vortax/tree/main/docs">Documentation</a>
+        </div>
+      </div>
+    </header>
+    <div class="pwrap">
+      <div class="pbody">
+        <section class="pintro reveal">
+          <p>Pick a system from the catalog, or bring your own ISO, disk image or archive. Vortax downloads it, prepares the disk, starts QEMU and gives you VNC access, optionally through a tunnel.</p>
+          <p>It is deliberately small: standard library only, so the <code>.deb</code> is a few hundred KB, and it runs on a phone in Termux as happily as on a VPS or a CI runner.</p>
+        </section>
+
+        <section class="psec">
+          <h2 class="sub reveal">What it does</h2>
+          <ul class="features">
+        <li class="feature reveal">
+          <h3>Standard library only</h3>
+          <p>No pip dependencies; the .deb is a few hundred KB.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>KVM or software</h3>
+          <p>Uses KVM when you have it and software emulation when you don't &mdash; phones, most VPSes, CI runners.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Safe defaults</h3>
+          <p>VNC and the QEMU monitor are local-only, passwords are random per VM and never appear in process lists, tokens never go on a command line, and archives are extracted with path checks.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Testable</h3>
+          <p>The QEMU command is built by one pure function; <code>vortax selftest --boot</code> boots a generated 512-byte guest through the real pipeline to prove an install works.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Fresh catalog</h3>
+          <p>Entries like <code>alpine</code>, <code>ubuntu-server</code>, <code>arch</code> and <code>tumbleweed</code> look up the current ISO name when you run them, so they do not go stale.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Your own media</h3>
+          <p>A local ISO, a URL, or a <code>.7z .zip .tar.* .gz .xz .bz2 .zst</code> archive holding a disk image; the real disk format is detected.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Presets</h3>
+          <p>Save a set of options under a name and run it like a catalog id.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Sharing</h3>
+          <p>SSH forwarded to a random free local port, <code>scp</code>-style copy, and a 9p shared folder.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Devices</h3>
+          <p>USB passthrough and an emulated sound card.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Snapshots</h3>
+          <p>Stop saves the live state and the next start resumes it.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Utilities</h3>
+          <p>Screenshot to PNG, disk resize / info / compact, <code>logs -f</code>, and a background watcher that stops a VM after N minutes.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Phone aware</h3>
+          <p>On Termux RAM defaults are capped, <code>doctor</code> prints the <code>pkg install</code> line for missing tools, and a wake lock is taken while a VM runs.</p>
+        </li>
+          </ul>
+        </section>
+      </div>
+      <aside class="pside reveal">
+        <div class="specs">
+          <h2 class="sub">At a glance</h2>
+          <dl>
+        <div class="dl-row">
+          <dt>Requires</dt>
+          <dd>Python 3.9+, qemu-system-x86_64, qemu-img</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Dependencies</dt>
+          <dd>Standard library only</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Install</dt>
+          <dd>apt repository, or pipx / pip</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Acceleration</dt>
+          <dd>KVM when available, software otherwise</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Access</dt>
+          <dd>VNC, optionally through a tunnel</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Config order</dt>
+          <dd>CLI, then environment, then config.json</dd>
+        </div>
+          </dl>
+        </div>
+        <a class="side-link" href="https://github.com/CodeVortax/vortax">Repository <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Install</h2>
+        <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>Debian and Ubuntu, including proot on a phone</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>curl -fsSL https://codevortax.github.io/vortax/install.sh | sudo sh
+vortax doctor</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Anywhere with Python 3.9+</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>pipx install .            # or: pip install .
+pkg/apt install qemu     # you still need qemu-system-x86_64 and qemu-img</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">3</span>
+          <div class="step-body">
+            <h3>Build the .deb</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>MAINTAINER=&quot;You &lt;you@example.com&gt;&quot; packaging/build-deb.sh   # -&gt; dist/</code></pre></div>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">How to use it</h2>
+        <div class="usage">
+          <div class="usage-block reveal">
+            <h3>Quick start</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>vortax list                                   # the catalog
+vortax plan --system ubuntu --boot-mode iso   # what would happen, and the exact QEMU command
+vortax run  --system mint --tunnel bore       # prepare, start, wait; Ctrl-C stops cleanly
+vortax start --system debian --name lab       # same, but returns immediately
+vortax info --name lab --show-password        # address and VNC password
+vortax stop --name lab
+vortax start --name lab                       # restart: reuses how it was launched</code></pre></div>
+          </div>
+          <div class="usage-block reveal">
+            <h3>More of it</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>vortax wizard                                   # questions, optionally saved as a preset
+vortax preset save work --system ubuntu-server --ram-mb 4096 --ssh --share ~/code:code
+vortax start lab --ssh &amp;&amp; vortax ssh -u me      # SSH forwarded to 127.0.0.1
+vortax cp ./notes.txt vm:/home/me/
+vortax screenshot --name lab --out lab.png
+vortax disk resize +20G --name lab
+vortax logs -f --name lab</code></pre></div>
+          </div>
+          <div class="usage-block reveal">
+            <h3>Drive it from the environment</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>VORTAX_SYSTEM=bazzite VORTAX_BOOT_MODE=iso VORTAX_RAM_MB=4096 vortax run
+vortax config show     # the merged result, passwords redacted</code></pre></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Good to know</h2>
+        <ul class="notes">
+          <li class="reveal">After an installer finishes, boot from the disk instead of the ISO: <code>vortax start --name lab --boot disk</code>.</li>
+          <li class="reveal">Every option has a <code>VORTAX_&lt;NAME&gt;</code> variable, which is how scripts and CI drive it.</li>
+          <li class="reveal">A wake lock needs <code>termux-api</code>; <code>--notify</code> uses <code>termux-notification</code> when it exists.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="pn" aria-label="More projects">
+      <a class="pn-link prev" href="esp32-wifi-repeater-manage.html"><span>Previous</span><b>esp32-wifi-repeater-manage</b></a>
+      <a class="pn-link next" href="relink.html"><span>Next</span><b>relink</b></a>
+    </nav>
+  </article>
+</main>
+
+<footer>
+  <p class="foot-links">
+    <a href="../index.html#projects">All projects</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/vortax">Source on GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
+  </p>
+  <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

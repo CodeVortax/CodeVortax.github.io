@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>qpack — CodeVortax</title>
+<meta name="description" content="Scan exam pages, read the Arabic physics, grade the answers.">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://codevortax.github.io/projects/qpack.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="qpack — CodeVortax">
+<meta property="og:description" content="Scan exam pages, read the Arabic physics, grade the answers.">
+<meta property="og:url" content="https://codevortax.github.io/projects/qpack.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "qpack", "description": "Scan exam pages, read the Arabic physics, grade the answers.", "codeRepository": "https://github.com/CodeVortax/qpack", "programmingLanguage": "Python", "license": "https://www.gnu.org/licenses/agpl-3.0.html", "url": "https://codevortax.github.io/projects/qpack.html"}</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="bar"></span></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About</a>
+    <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <article>
+    <header class="phead">
+      <div class="phead-inner">
+        <p class="crumb reveal"><a href="../index.html#projects">Projects</a> <span aria-hidden="true">/</span> CLI &amp; tools</p>
+        <h1 class="reveal">qpack</h1>
+        <p class="ptag reveal">Scan exam pages, read the Arabic physics, grade the answers.</p>
+        <div class="tags reveal"><span class="tag lang"><i style="--c:#3572a5"></i>Python</span><span class="tag">AGPL-3.0</span><span class="tag">★ 1</span><span class="tag">beta</span><span class="tag">CLI &amp; tools</span></div>
+        <div class="pcta reveal">
+          <a class="btn primary" href="https://github.com/CodeVortax/qpack">View the source</a>
+          <a class="btn ghost" href="https://github.com/CodeVortax/qpack/tree/main/tests">Documentation</a>
+        </div>
+      </div>
+    </header>
+    <div class="pwrap">
+      <div class="pbody">
+        <section class="pintro reveal">
+          <p>qpack is a command-line study tool for students and teachers. It takes photos of exams and homework workbooks, deskews the pages, runs OCR through the Gemini Vision API, evaluates multiple-choice answers, groups questions by physical concept and formula, and packages everything into portable <code>.qpack</code> archives.</p>
+          <p>With no API key or while offline it falls back to a built-in fixture instead of failing, so the whole pipeline stays testable.</p>
+        </section>
+
+        <section class="psec">
+          <h2 class="sub reveal">What it does</h2>
+          <ul class="features">
+        <li class="feature reveal">
+          <h3>Vision OCR</h3>
+          <p>Talks to Google Gemini through plain <code>requests</code> &mdash; no heavy SDK to install.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Watermark-resistant deskewing</h3>
+          <p>Estimates page tilt from horizontal edge projection variance, straightens rotated captures and filters out background teacher watermarks.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>First-class Arabic</h3>
+          <p>Full bidirectional Unicode support, Arabic-Indic numeral normalisation (٠١٢٣ ↔ 0123) and standard multiple-choice letter normalisation.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Maths as LaTeX</h3>
+          <p>Physics equations are parsed and rendered as standard LaTeX.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Pencil working and review flags</h3>
+          <p>Crops both the printed question and the handwritten margin, scores OCR confidence, and flags faint handwriting below 70% for manual review.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Concept and formula grouping</h3>
+          <p>Organises questions by physical concept (e.g. عزم الازدواج المغناطيسي) or by underlying formula (e.g. τ = B I A N sinθ), not only by number.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Portable bundles</h3>
+          <p>A .qpack is a plain ZIP: <code>manifest.json</code>, <code>questions.json</code> and the cropped images.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Tested</h3>
+          <p>Unit tests for Arabic handling, deskewing, packing, grading and the CLI.</p>
+        </li>
+          </ul>
+        </section>
+      </div>
+      <aside class="pside reveal">
+        <div class="specs">
+          <h2 class="sub">At a glance</h2>
+          <dl>
+        <div class="dl-row">
+          <dt>Requires</dt>
+          <dd>Python, Pillow, numpy</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Vision</dt>
+          <dd>Google Gemini (gemini-2.5-flash)</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Key</dt>
+          <dd>GEMINI_API_KEY</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Format</dt>
+          <dd>.qpack = zip of manifest.json, questions.json, images/</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Offline</dt>
+          <dd>Falls back to a built-in workbook fixture</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Focus</dt>
+          <dd>Egyptian secondary physics, chapter 2</dd>
+        </div>
+          </dl>
+        </div>
+        <a class="side-link" href="https://github.com/CodeVortax/qpack">Repository <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Install</h2>
+        <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>Prerequisites in Termux</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>pkg install -y python python-pillow python-numpy</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Install qpack</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>cd ~/qpack
+pip install -e .</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">3</span>
+          <div class="step-body">
+            <h3>Set the API key</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>export GEMINI_API_KEY=&quot;your-google-gemini-api-key&quot;</code></pre></div>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">How to use it</h2>
+        <div class="usage">
+          <div class="usage-block reveal">
+            <h3>Scan a page into an archive</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>qpack scan page1.jpg -o page1.qpack</code></pre></div>
+          </div>
+          <div class="usage-block reveal">
+            <h3>Check answers and flag weak reads</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>qpack check page1.qpack</code></pre></div>
+          </div>
+          <div class="usage-block reveal">
+            <h3>Inspect questions and solutions</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>qpack show page1.qpack --group-by concept   # default
+qpack show page1.qpack --group-by formula
+qpack show page1.qpack --group-by number</code></pre></div>
+          </div>
+          <div class="usage-block reveal">
+            <h3>What check prints</h3>
+            <p>Question number, concept, your choice, the verified correct choice, status (<b>✓ RIGHT</b> / <b>✗ WRONG</b> / <b>- SKIPPED</b>), OCR confidence for the margin working, and a review flag for low-confidence reads.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Good to know</h2>
+        <ul class="notes">
+          <li class="reveal">Phase 1. The Gemini call is optional, and the offline fixture is a real chapter 2 workbook, not random data.</li>
+          <li class="reveal">Scanning sends page images to Google's API when a key is set &mdash; that is the only network step.</li>
+          <li class="reveal">Bundles are ordinary zips, so you can inspect or edit them with any zip tool.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="pn" aria-label="More projects">
+      <a class="pn-link prev" href="rtlterm.html"><span>Previous</span><b>rtlterm</b></a>
+      <a class="pn-link next" href="unisoc-imei-notes.html"><span>Next</span><b>unisoc-imei-notes</b></a>
+    </nav>
+  </article>
+</main>
+
+<footer>
+  <p class="foot-links">
+    <a href="../index.html#projects">All projects</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/qpack">Source on GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
+  </p>
+  <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

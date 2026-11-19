@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>esp-usb-bridge — CodeVortax</title>
+<meta name="description" content="Flash and monitor an ESP32 from Termux. No root, no PC.">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://codevortax.github.io/projects/esp-usb-bridge.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="esp-usb-bridge — CodeVortax">
+<meta property="og:description" content="Flash and monitor an ESP32 from Termux. No root, no PC.">
+<meta property="og:url" content="https://codevortax.github.io/projects/esp-usb-bridge.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "esp-usb-bridge", "description": "Flash and monitor an ESP32 from Termux. No root, no PC.", "codeRepository": "https://github.com/CodeVortax/esp-usb-bridge", "programmingLanguage": "Java", "license": "https://opensource.org/licenses/MIT", "url": "https://codevortax.github.io/projects/esp-usb-bridge.html"}</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="bar"></span></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About</a>
+    <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <article>
+    <header class="phead">
+      <div class="phead-inner">
+        <p class="crumb reveal"><a href="../index.html#projects">Projects</a> <span aria-hidden="true">/</span> Android</p>
+        <h1 class="reveal">esp-usb-bridge</h1>
+        <p class="ptag reveal">Flash and monitor an ESP32 from Termux. No root, no PC.</p>
+        <div class="tags reveal"><span class="tag lang"><i style="--c:#b07219"></i>Java</span><span class="tag">MIT</span><span class="tag">★ 2</span><span class="tag">app</span><span class="tag">Android</span></div>
+        <div class="pcta reveal">
+          <a class="btn primary" href="https://github.com/CodeVortax/esp-usb-bridge">View the source</a>
+          <a class="btn ghost" href="https://github.com/CodeVortax/esp-usb-bridge/tree/main/docs">Documentation</a>
+        </div>
+      </div>
+    </header>
+    <div class="pwrap">
+      <div class="pbody">
+        <section class="pintro reveal">
+          <p>Android does not let Termux open USB devices, and without root there is no <code>/dev/ttyUSB0</code>. This app fixes that from the other side: it is allowed to use the USB port, so it does, and it serves that port to Termux on <code>127.0.0.1:2217</code> using RFC 2217 &mdash; a standard <code>esptool</code> and <code>pySerial</code> already understand.</p>
+          <p>Automatic reset into the bootloader, baud-rate changes and the serial monitor all work, so flashing from a phone feels like flashing from a PC.</p>
+        </section>
+
+        <section class="psec">
+          <h2 class="sub reveal">What it does</h2>
+          <ul class="features">
+        <li class="feature reveal">
+          <h3>Real flashing</h3>
+          <p><code>esptool</code> over the bridge, with automatic bootloader reset on DTR/RTS and speeds up to 921600.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>The espb command</h3>
+          <p><code>start</code>, <code>status</code>, <code>flash</code>, <code>erase</code>, <code>info</code>, <code>mac</code>, <code>monitor</code>, <code>log</code> and <code>doctor</code>.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Starts itself</h3>
+          <p><code>espb flash</code> opens the app and starts the bridge if it is not running yet.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Scriptable logs</h3>
+          <p><code>espb log --seconds 20 --out boot.log --reset</code> prints timestamped lines and exits.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Many chips</h3>
+          <p>CP210x, CH340/CH34x, FTDI, PL2303 and the ESP32's built-in USB, through usb-serial-for-android.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Local only</h3>
+          <p>The port listens on <code>127.0.0.1</code>, so nothing else on your network can reach the board.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Tested protocol</h3>
+          <p>CI runs the protocol against a real pySerial RFC 2217 client on every push.</p>
+        </li>
+          </ul>
+        </section>
+      </div>
+      <aside class="pside reveal">
+        <div class="specs">
+          <h2 class="sub">At a glance</h2>
+          <dl>
+        <div class="dl-row">
+          <dt>Platform</dt>
+          <dd>Android 8.0 or newer</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Bridge port</dt>
+          <dd>127.0.0.1:2217 (RFC 2217)</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Status port</dt>
+          <dd>2218, read-only</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Chips</dt>
+          <dd>CP210x, CH340/CH34x, FTDI, PL2303, ESP32 native USB</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Max speed</dt>
+          <dd>921600 baud</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Cloud</dt>
+          <dd>None</dd>
+        </div>
+          </dl>
+        </div>
+        <a class="side-link" href="https://github.com/CodeVortax/esp-usb-bridge">Repository <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Install</h2>
+        <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>The app</h3>
+            <p>Take <code>esp-usb-bridge-debug.apk</code> from the latest release or Actions run and install it. Android will ask you to allow installs from this source.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Termux</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>curl -fsSL https://raw.githubusercontent.com/CodeVortax/esp-usb-bridge/main/termux/install.sh | bash</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">3</span>
+          <div class="step-body">
+            <h3>The board</h3>
+            <p>Plug it in with a <b>data</b> USB cable and an OTG adapter. Tap OK on the USB permission prompt, ideally <b>Always</b>.</p>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">How to use it</h2>
+        <div class="usage">
+          <div class="usage-block reveal">
+            <h3>Everyday commands</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>espb start                       # open the app and start the bridge
+espb status                      # running? which device? client connected?
+espb flash firmware.bin          # write firmware at 0x0
+espb monitor                     # serial monitor
+espb log --seconds 20 --reset    # capture boot log and exit
+espb doctor                      # check the Termux side</code></pre></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Good to know</h2>
+        <ul class="notes">
+          <li class="reveal"><b>Wrong boot mode detected (0x13):</b> the board did not enter download mode. Hold BOOT while it says Connecting..., or pass <code>--manual</code>.</li>
+          <li class="reveal"><b>The bridge did not come up:</b> plug the board in first, then run <code>espb start</code> and tap OK within 45 seconds.</li>
+          <li class="reveal">If it stops with the screen off, turn off battery optimisation for the app.</li>
+          <li class="reveal">Only one client at a time &mdash; close <code>espb monitor</code> before flashing.</li>
+          <li class="reveal">An architecture diagram and flashing notes are in <code>docs/</code>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="pn" aria-label="More projects">
+      <a class="pn-link prev" href="swipe-tally.html"><span>Previous</span><b>swipe-tally</b></a>
+      <a class="pn-link next" href="appblocker.html"><span>Next</span><b>AppBlocker</b></a>
+    </nav>
+  </article>
+</main>
+
+<footer>
+  <p class="foot-links">
+    <a href="../index.html#projects">All projects</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/esp-usb-bridge">Source on GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
+  </p>
+  <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

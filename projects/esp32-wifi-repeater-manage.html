@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>esp32-wifi-repeater-manage — CodeVortax</title>
+<meta name="description" content="Share your WiFi on purpose. See it. Limit it.">
+<meta name="theme-color" content="#0b0f17">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://codevortax.github.io/projects/esp32-wifi-repeater-manage.html">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="esp32-wifi-repeater-manage — CodeVortax">
+<meta property="og:description" content="Share your WiFi on purpose. See it. Limit it.">
+<meta property="og:url" content="https://codevortax.github.io/projects/esp32-wifi-repeater-manage.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareSourceCode", "name": "esp32-wifi-repeater-manage", "description": "Share your WiFi on purpose. See it. Limit it.", "codeRepository": "https://github.com/CodeVortax/esp32-wifi-repeater-manage", "programmingLanguage": "C", "license": "https://www.gnu.org/licenses/agpl-3.0.html", "url": "https://codevortax.github.io/projects/esp32-wifi-repeater-manage.html"}</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress"><span id="bar"></span></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark" aria-hidden="true">&lt;</span>CodeVortax<span class="brand-mark" aria-hidden="true">&gt;</span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About</a>
+    <a class="gh" href="https://github.com/CodeVortax">GitHub <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+
+<main id="main">
+  <article>
+    <header class="phead">
+      <div class="phead-inner">
+        <p class="crumb reveal"><a href="../index.html#projects">Projects</a> <span aria-hidden="true">/</span> ESP32</p>
+        <h1 class="reveal">esp32-wifi-repeater-manage</h1>
+        <p class="ptag reveal">Share your WiFi on purpose. See it. Limit it.</p>
+        <div class="tags reveal"><span class="tag lang"><i style="--c:#555555"></i>C</span><span class="tag">AGPL-3.0</span><span class="tag">★ 1</span><span class="tag">beta</span><span class="tag">ESP32</span></div>
+        <div class="pcta reveal">
+          <a class="btn primary" href="https://github.com/CodeVortax/esp32-wifi-repeater-manage">View the source</a>
+          <a class="btn ghost" href="https://github.com/CodeVortax/esp32-wifi-repeater-manage/tree/master/docs">Documentation</a>
+        </div>
+      </div>
+    </header>
+    <div class="pwrap">
+      <div class="pbody">
+        <section class="pintro reveal">
+          <p>A repeater built on one idea: whoever uses your internet should be visible, and capped. The ESP32 joins your router as a client and opens its own network next to it. Phones and laptops connect to the ESP32 and their traffic is forwarded to the router through NAT.</p>
+          <p>Because every byte passes through the chip, it can count usage per device, cut a device off when it hits its daily quota, show the domains being looked up, and report to you over Telegram. Everything runs on the chip: no cloud, no account, no app.</p>
+        </section>
+
+        <section class="psec">
+          <h2 class="sub reveal">What it does</h2>
+          <ul class="features">
+        <li class="feature reveal">
+          <h3>AP + STA with NAT</h3>
+          <p>NAT turns on as soon as the router gives an address, and again after every reconnect.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Background connect</h3>
+          <p>Startup never waits for the router, so the dashboard is reachable immediately.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>DNS through the ESP32</h3>
+          <p>DHCP hands out the ESP32 as the DNS server, so every lookup is seen and then forwarded upstream.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Per-device counting</h3>
+          <p>Counted at the network-stack level, in both directions, per device MAC.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Daily quota</h3>
+          <p>Default 1 GB per device per day, changeable per device, or 0 for unlimited.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Block and whitelist</h3>
+          <p>A blocked device stays connected but gets no traffic; whitelisted devices are never limited.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Local midnight reset</h3>
+          <p>Time-zone and daylight-saving aware (Egypt by default), and correct even when the board reboots across midnight.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Remembers devices</h3>
+          <p>Limits, whitelist, blocks and counters are kept in flash, written every minute and only when something changed.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Router-style dashboard</h3>
+          <p>Login screen, then Overview, Users, Apps, Speed, Settings and System. Arabic and English, full right-to-left.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Per-app usage</h3>
+          <p>Named users with usage per category and per app (YouTube, TikTok, Facebook, WhatsApp, Telegram, Google, Snapchat), with new domains teachable from the dashboard.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Blocking and filtering</h3>
+          <p>Built-in 18 KB ad / tracker / site list plus your own hosts file, a choice of filtering DNS (Cloudflare Family, AdGuard), and an Internet off switch.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Speed limits</h3>
+          <p>For the whole network, a default per user, and per user.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Update over WiFi</h3>
+          <p>Send <code>ota-firmware.bin</code> or <code>ota-ui.bin</code> from System &gt; Update. A bad firmware rolls back by itself.</p>
+        </li>
+        <li class="feature reveal">
+          <h3>Telegram bot</h3>
+          <p>Status, block, unblock, whitelist, quota and ping, restricted to the chat ID you saved.</p>
+        </li>
+          </ul>
+        </section>
+      </div>
+      <aside class="pside reveal">
+        <div class="specs">
+          <h2 class="sub">At a glance</h2>
+          <dl>
+        <div class="dl-row">
+          <dt>Board</dt>
+          <dd>Classic ESP32, 4 MB flash</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Framework</dt>
+          <dd>PlatformIO / Arduino</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Mode</dt>
+          <dd>AP + STA with NAT</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Default quota</dt>
+          <dd>1 GB per device per day</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Setup hotspot</dt>
+          <dd>AOSP / 12345678</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Default login</dt>
+          <dd>admin / admin1234, change it</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Control</dt>
+          <dd>Web dashboard and Telegram bot</dd>
+        </div>
+        <div class="dl-row">
+          <dt>Cloud</dt>
+          <dd>None</dd>
+        </div>
+          </dl>
+        </div>
+        <a class="side-link" href="https://github.com/CodeVortax/esp32-wifi-repeater-manage">Repository <span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Install</h2>
+        <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">1</span>
+          <div class="step-body">
+            <h3>Get the firmware</h3>
+            <p>Take the <code>firmware</code> artifact from the latest Actions run, or a file from Releases. It is one file that already contains the web UI.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">2</span>
+          <div class="step-body">
+            <h3>Or build it yourself</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>git clone https://github.com/CodeVortax/esp32-wifi-repeater-manage
+cd esp32-wifi-repeater-manage
+pip install -U platformio
+./build.sh merge        # -&gt; dist/esp32dev-merged.bin</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">3</span>
+          <div class="step-body">
+            <h3>On Termux</h3>
+            <p><code>./build.sh bin</code> also copies the firmware to your Downloads folder.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">4</span>
+          <div class="step-body">
+            <h3>Flash it at offset 0x0</h3>
+            <div class="codewrap"><button class="copy" type="button" aria-label="Copy this command">Copy</button><pre><code>esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash 0x0 esp32-wifi-repeater.bin</code></pre></div>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">5</span>
+          <div class="step-body">
+            <h3>Or flash from Chrome</h3>
+            <p>ESP Web Tools works from the browser, which is handy when you only have a phone.</p>
+          </div>
+        </li>
+        <li class="step reveal">
+          <span class="step-n" aria-hidden="true">6</span>
+          <div class="step-body">
+            <h3>First run</h3>
+            <p>Join the WiFi <b>AOSP</b> (password <code>12345678</code>) and open <code>http://192.168.4.1</code>. Log in as <code>admin</code> / <code>admin1234</code>, then in Settings enter your home WiFi, a new repeater password and a <b>new dashboard password</b>. The ESP32 reboots and joins your router.</p>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">How to use it</h2>
+        <div class="usage">
+          <div class="usage-block reveal">
+            <h3>Running it</h3>
+            <p>Open the dashboard at the board's IP, or talk to the bot. Every change is validated before it is saved, and every state-changing call has cross-site protection.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="table-block reveal">
+        <h2 class="sub">Telegram commands</h2>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th scope="col">Command</th><th scope="col">Does</th></tr></thead>
+            <tbody>
+            <tr><td>/status</td><td>Every device with usage and state</td></tr>
+            <tr><td>/block &lt;mac&gt; · /unblock &lt;mac&gt;</td><td>Cut off or restore a device</td></tr>
+            <tr><td>/whitelist &lt;mac&gt; · /unwhitelist &lt;mac&gt;</td><td>Exempt a device from the quota</td></tr>
+            <tr><td>/setquota &lt;mac&gt; &lt;mb&gt;</td><td>Daily limit in MB, 0 means unlimited</td></tr>
+            <tr><td>/ping &lt;host&gt;</td><td>Ping from the repeater</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="pwrap-single">
+      <div class="psec">
+        <h2 class="sub reveal">Good to know</h2>
+        <ul class="notes">
+          <li class="reveal">Change the default dashboard password immediately &mdash; the page keeps warning you until you do.</li>
+          <li class="reveal">The dashboard, the API and the live WebSocket all require a signed-in session, with lock-out after 5 wrong tries.</li>
+          <li class="reveal">Hold <b>BOOT</b> for 5 seconds to wipe the saved settings if you lock yourself out.</li>
+          <li class="reveal">A reboot across midnight still resets quotas correctly.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="pn" aria-label="More projects">
+      <a class="pn-link prev" href="esp32-ir-bench.html"><span>Previous</span><b>esp32-ir-bench</b></a>
+      <a class="pn-link next" href="vortax.html"><span>Next</span><b>vortax</b></a>
+    </nav>
+  </article>
+</main>
+
+<footer>
+  <p class="foot-links">
+    <a href="../index.html#projects">All projects</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/esp32-wifi-repeater-manage">Source on GitHub</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://github.com/CodeVortax/CodeVortax.github.io">This site's source</a>
+  </p>
+  <p class="foot-copy">&copy; <span id="year">2026</span> CodeVortax</p>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

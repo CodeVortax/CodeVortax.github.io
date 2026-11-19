@@ -1,0 +1,56 @@
+{
+  "order": 8,
+  "slug": "vortax",
+  "name": "vortax",
+  "tagline": "Run and manage QEMU virtual machines from one small CLI and a web dashboard.",
+  "cat": "tool",
+  "lang": "Python",
+  "color": "#3572a5",
+  "stars": 2,
+  "license": "AGPL-3.0",
+  "status": "stable",
+  "repo": "https://github.com/CodeVortax/vortax",
+  "branch": "main",
+  "docs": "docs",
+  "specs": [
+    ["Requires", "Python 3.9+, qemu-system-x86_64, qemu-img"],
+    ["Dependencies", "Standard library only"],
+    ["Install", "apt repository, or pipx / pip"],
+    ["Acceleration", "KVM when available, software otherwise"],
+    ["Access", "VNC, optionally through a tunnel"],
+    ["Config order", "CLI, then environment, then config.json"]
+  ],
+  "intro": [
+    "Pick a system from the catalog, or bring your own ISO, disk image or archive. Vortax downloads it, prepares the disk, starts QEMU and gives you VNC access, optionally through a tunnel.",
+    "It is deliberately small: standard library only, so the <code>.deb</code> is a few hundred KB, and it runs on a phone in Termux as happily as on a VPS or a CI runner."
+  ],
+  "features": [
+    ["Standard library only", "No pip dependencies; the .deb is a few hundred KB."],
+    ["KVM or software", "Uses KVM when you have it and software emulation when you don't &mdash; phones, most VPSes, CI runners."],
+    ["Safe defaults", "VNC and the QEMU monitor are local-only, passwords are random per VM and never appear in process lists, tokens never go on a command line, and archives are extracted with path checks."],
+    ["Testable", "The QEMU command is built by one pure function; <code>vortax selftest --boot</code> boots a generated 512-byte guest through the real pipeline to prove an install works."],
+    ["Fresh catalog", "Entries like <code>alpine</code>, <code>ubuntu-server</code>, <code>arch</code> and <code>tumbleweed</code> look up the current ISO name when you run them, so they do not go stale."],
+    ["Your own media", "A local ISO, a URL, or a <code>.7z .zip .tar.* .gz .xz .bz2 .zst</code> archive holding a disk image; the real disk format is detected."],
+    ["Presets", "Save a set of options under a name and run it like a catalog id."],
+    ["Sharing", "SSH forwarded to a random free local port, <code>scp</code>-style copy, and a 9p shared folder."],
+    ["Devices", "USB passthrough and an emulated sound card."],
+    ["Snapshots", "Stop saves the live state and the next start resumes it."],
+    ["Utilities", "Screenshot to PNG, disk resize / info / compact, <code>logs -f</code>, and a background watcher that stops a VM after N minutes."],
+    ["Phone aware", "On Termux RAM defaults are capped, <code>doctor</code> prints the <code>pkg install</code> line for missing tools, and a wake lock is taken while a VM runs."]
+  ],
+  "install": [
+    { "title": "Debian and Ubuntu, including proot on a phone", "code": "curl -fsSL https://codevortax.github.io/vortax/install.sh | sudo sh\nvortax doctor" },
+    { "title": "Anywhere with Python 3.9+", "code": "pipx install .            # or: pip install .\npkg/apt install qemu     # you still need qemu-system-x86_64 and qemu-img" },
+    { "title": "Build the .deb", "code": "MAINTAINER=\"You <you@example.com>\" packaging/build-deb.sh   # -> dist/" }
+  ],
+  "usage": [
+    { "title": "Quick start", "code": "vortax list                                   # the catalog\nvortax plan --system ubuntu --boot-mode iso   # what would happen, and the exact QEMU command\nvortax run  --system mint --tunnel bore       # prepare, start, wait; Ctrl-C stops cleanly\nvortax start --system debian --name lab       # same, but returns immediately\nvortax info --name lab --show-password        # address and VNC password\nvortax stop --name lab\nvortax start --name lab                       # restart: reuses how it was launched" },
+    { "title": "More of it", "code": "vortax wizard                                   # questions, optionally saved as a preset\nvortax preset save work --system ubuntu-server --ram-mb 4096 --ssh --share ~/code:code\nvortax start lab --ssh && vortax ssh -u me      # SSH forwarded to 127.0.0.1\nvortax cp ./notes.txt vm:/home/me/\nvortax screenshot --name lab --out lab.png\nvortax disk resize +20G --name lab\nvortax logs -f --name lab" },
+    { "title": "Drive it from the environment", "code": "VORTAX_SYSTEM=bazzite VORTAX_BOOT_MODE=iso VORTAX_RAM_MB=4096 vortax run\nvortax config show     # the merged result, passwords redacted" }
+  ],
+  "notes": [
+    "After an installer finishes, boot from the disk instead of the ISO: <code>vortax start --name lab --boot disk</code>.",
+    "Every option has a <code>VORTAX_&lt;NAME&gt;</code> variable, which is how scripts and CI drive it.",
+    "A wake lock needs <code>termux-api</code>; <code>--notify</code> uses <code>termux-notification</code> when it exists."
+  ]
+}
