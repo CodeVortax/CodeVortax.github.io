@@ -54,6 +54,11 @@ CARD_BLURBS = {
 
 JSON_LD_EXTRA = {}
 
+SITE = "https://codevortax.github.io/"
+
+# Link previews. Telegram and WhatsApp fetch og:image and crop it to roughly a
+# square, so the cards are drawn with all text inside the centre 630x630.
+# width/height are declared because some scrapers will not probe the file.
 HEAD = """<!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -66,10 +71,19 @@ HEAD = """<!doctype html>
 <link rel="canonical" href="https://codevortax.github.io/{path}">
 
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="CodeVortax">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="https://codevortax.github.io/{path}">
+<meta property="og:image" content="{image}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{imgalt}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{image}">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0f17'/%3E%3Cpath d='M40 20 26 32l14 12' fill='none' stroke='%2358a6ff' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="{css}">
@@ -197,6 +211,8 @@ def project_page(p, prev_p, next_p):
         title=html.escape(title),
         desc=html.escape(desc),
         path=f"projects/{slug}.html",
+        image=f"https://codevortax.github.io/og/{slug}.png",
+        imgalt=f"{p['name']} — CodeVortax social preview image",
         css="../style.css",
         extra="",
     )]
@@ -384,6 +400,8 @@ def landing_page(projects):
         title="CodeVortax — Android apps, ESP32 firmware and CLI tools",
         desc="Open source Android apps, ESP32 firmware and command-line tools. Local-first, offline by default, no accounts and no tracking.",
         path="",
+        image="https://codevortax.github.io/og/cover.png",
+        imgalt="CodeVortax — Android apps, ESP32 firmware and CLI tools",
         css="style.css",
         extra=extra,
     )
@@ -486,6 +504,8 @@ def index_page(projects):
         title="All projects — CodeVortax",
         desc="Every CodeVortax project, with a page of its own: Android apps, ESP32 firmware, CLI and web tools.",
         path="projects.html",
+        image="https://codevortax.github.io/og/cover.png",
+        imgalt="CodeVortax — all projects",
         css="style.css",
         extra="",
     )
